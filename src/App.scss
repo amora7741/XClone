@@ -18,7 +18,7 @@ body {
 }
 
 .index-icon {
-  width: 370px;
+  width: 350px;
   height: auto;
 }
 
@@ -49,13 +49,14 @@ body {
 .index-main {
   display: flex;
   justify-content: space-around;
+  gap: 2rem;
   flex: 1;
 
   &-right {
     display: flex;
     flex-direction: column;
     align-self: center;
-    gap: 5rem;
+    gap: 4rem;
 
     h1 {
       font-size: 4rem;
@@ -65,21 +66,41 @@ body {
 }
 
 button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   padding: 10px 45px;
+  border: none;
+  width: 100%;
   border-radius: 9999px;
+  font-weight: bold;
+  font-size: 0.9rem;
   cursor: pointer;
+
+  &:hover {
+    background-image: linear-gradient(rgb(0 0 0/5%) 0 0);
+  }
 }
 
 .jointoday {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 50%;
 
   &-signup {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
   }
+}
+
+.index-existingaccount {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
 }
 
 .separator {
@@ -94,4 +115,9 @@ button {
   content: '';
   flex: 1;
   border-top: 1px solid $footer-color;
+}
+
+.button-icon {
+  height: 20px;
+  width: auto;
 }
