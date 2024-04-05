@@ -15,6 +15,7 @@ body {
 
 #xicon {
   filter: invert(100%);
+  pointer-events: none;
 }
 
 .index-icon {
@@ -97,6 +98,19 @@ button {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+}
+
+.signup-terms {
+  color: $footer-color;
+
+  a {
+    color: $blue-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
