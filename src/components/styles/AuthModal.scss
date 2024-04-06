@@ -1,0 +1,15 @@
+$overlay-background: rgba(91, 112, 131, 0.4);
+
+.popup-overlay {
+  background: $overlay-background;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  border: none;
+  border-radius: 16px;
+  width: fit-content;
+}
