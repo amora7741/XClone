@@ -1,0 +1,57 @@
+@use '../App.scss';
+
+$overlay-background: rgba(91, 112, 131, 0.4);
+
+.popup-overlay {
+  background: $overlay-background;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  background-color: black;
+  border: none;
+  border-radius: 16px;
+  width: fit-content;
+  min-height: 70vh;
+
+  #closebutton {
+    position: absolute;
+    width: fit-content;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    filter: invert(100%);
+    left: 2%;
+    top: 2%;
+  }
+
+  #xicon {
+    width: 30px;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .gray {
+    color: App.$footer-color;
+  }
+
+  span {
+    color: App.$blue-primary;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .jointoday {
+    gap: 2.3rem;
+
+    &-signup {
+      gap: 1.3rem;
+    }
+  }
+}
