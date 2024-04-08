@@ -15,7 +15,7 @@ const AuthModal = ({ initialMode, open, onClose }) => {
   };
 
   return (
-    <Popup open={open} onClose={onClose} modal>
+    <Popup open={open} onClose={onClose} modal closeOnDocumentClick={false}>
       <button id='closebutton' onClick={onClose}>
         <img src={CloseIcon} alt='Close button' />
       </button>
