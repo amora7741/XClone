@@ -83,7 +83,8 @@ $overlay-background: rgba(91, 112, 131, 0.4);
     display: flex;
     align-items: center;
     cursor: text;
-    transition: 0.3s ease;
+    transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
   }
 
   input,
@@ -97,7 +98,6 @@ $overlay-background: rgba(91, 112, 131, 0.4);
   input:valid + label {
     font-size: 0.8rem;
     top: -15px;
-    pointer-events: none;
   }
 
   input:focus + label {
