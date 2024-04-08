@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import JoinToday from './JoinToday';
 import SignIn from './SignIn';
+import CreateAccount from './CreateAccount';
 import '../styles/AuthModal.scss';
 import XIcon from '../assets/icon.svg';
 import CloseIcon from '../assets/closebutton.svg';
@@ -10,9 +11,7 @@ import CloseIcon from '../assets/closebutton.svg';
 const AuthModal = ({ initialMode, open, onClose }) => {
   const [mode, setMode] = useState(initialMode);
 
-  const toggleMode = () => {
-    mode === 'signIn' ? setMode('signUp') : setMode('signIn');
-  };
+  const toggleMode = (mode) => setMode(mode);
 
   return (
     <Popup open={open} onClose={onClose} modal closeOnDocumentClick={false}>
@@ -20,19 +19,19 @@ const AuthModal = ({ initialMode, open, onClose }) => {
         <img src={CloseIcon} alt='Close button' />
       </button>
       <img src={XIcon} alt='X Icon' id='xicon' />
-      {mode === 'signIn' ? (
-        <SignIn onClick={() => toggleMode()} />
-      ) : (
+      {mode === 'signIn' && <SignIn onClick={() => toggleMode('signUp')} />}
+      {mode === 'signUp' && (
         <>
-          <JoinToday />
+          <JoinToday onClick={() => toggleMode('createAccount')} />
           <p className='gray'>
             Have an account already?{' '}
-            <span role='button' onClick={() => toggleMode()}>
+            <span role='button' onClick={() => toggleMode('signIn')}>
               Log in
             </span>
           </p>
         </>
       )}
+      {mode === 'createAccount' && <CreateAccount />}
     </Popup>
   );
 };

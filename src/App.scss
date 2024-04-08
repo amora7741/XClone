@@ -138,7 +138,7 @@ button {
 .separator::after {
   content: '';
   flex: 1;
-  border-top: 1px solid $footer-color;
+  border-top: 1px solid $dark-gray;
 }
 
 .button-icon {

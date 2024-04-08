@@ -7,6 +7,12 @@ import { useState } from 'react';
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [initialMode, setInitialMode] = useState('');
+
+  const openModal = (mode) => {
+    setInitialMode(mode);
+    setModalOpen(true);
+  };
 
   return (
     <div className='index-container'>
@@ -14,13 +20,13 @@ const Index = () => {
         <img src={XIcon} alt='X Icon' id='xicon' className='index-icon' />
         <div className='index-main-right'>
           <h1>Happening now</h1>
-          <JoinToday />
+          <JoinToday onClick={() => openModal('createAccount')} />
           <div className='index-existingaccount'>
             <h3>Already have an account?</h3>
             <Button
               backgroundColor='transparent'
               textColor='rgb(29, 155, 240)'
-              onClick={() => setModalOpen(true)}
+              onClick={() => openModal('signIn')}
               borderColor='rgb(113, 118, 123)'
             >
               Sign In
@@ -31,7 +37,7 @@ const Index = () => {
       <Footer />
       {modalOpen && (
         <AuthModal
-          initialMode='signIn'
+          initialMode={initialMode}
           open={modalOpen}
           onClose={() => setModalOpen(false)}
         />

@@ -1,6 +1,6 @@
 import Button from './Button';
 
-const JoinToday = () => {
+const JoinToday = ({ onClick }) => {
   const futureImplement = () => {
     alert('Not implemented yet :(');
   };
@@ -32,7 +32,11 @@ const JoinToday = () => {
           Sign up with Apple
         </Button>
         <p className='separator'>or</p>
-        <Button backgroundColor='rgb(29, 155, 240)' textColor='white'>
+        <Button
+          backgroundColor='rgb(29, 155, 240)'
+          textColor='white'
+          onClick={onClick}
+        >
           Create account
         </Button>
         <p className='signup-terms'>
