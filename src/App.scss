@@ -1,5 +1,6 @@
 $footer-color: rgb(113, 118, 123);
 $blue-primary: rgb(29, 155, 240);
+$dark-gray: rgb(51, 54, 57);
 
 * {
   margin: 0;
@@ -143,4 +144,38 @@ button {
 .button-icon {
   height: 20px;
   width: auto;
+}
+
+.signin-container {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  gap: 2rem;
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    input {
+      width: 100%;
+      padding: 18px 7px;
+      background-color: transparent;
+      color: white;
+      border: 1px solid $dark-gray;
+      position: relative;
+      font-size: 1rem;
+      border-radius: 5px;
+
+      outline: none;
+
+      &:focus {
+        border: 1px solid $blue-primary;
+      }
+    }
+  }
 }

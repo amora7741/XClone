@@ -21,7 +21,7 @@ const SignIn = ({ onClick }) => {
         </Button>
         <p className='separator'>or</p>
         <form action=''>
-          <input placeholder='Phone, email, or user'></input>
+          <input placeholder='Phone, email, or username'></input>
         </form>
         <Button backgroundColor='white' textColor='black'>
           Next
