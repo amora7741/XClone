@@ -1,0 +1,47 @@
+import Button from './Button';
+
+const SignIn = ({ onClick }) => {
+  return (
+    <div className='signin-container'>
+      <h2>Sign in to X</h2>
+      <div className='signin-form'>
+        <Button backgroundColor='white' textColor='black'>
+          <img
+            src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg'
+            className='button-icon'
+          />
+          Sign in with Google
+        </Button>
+        <Button backgroundColor='white' textColor='black'>
+          <img
+            src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg'
+            className='button-icon'
+          />
+          Sign in with Apple
+        </Button>
+        <p className='separator'>or</p>
+        <form action=''>
+          <input placeholder='Phone, email, or user'></input>
+        </form>
+        <Button backgroundColor='white' textColor='black'>
+          Next
+        </Button>
+        <Button
+          backgroundColor='transparent'
+          textColor='white'
+          borderColor='rgb(113, 118, 123)'
+        >
+          Forgot password?
+        </Button>
+      </div>
+      <p className='gray'>
+        Don't have an account?{' '}
+        <span role='button' onClick={onClick}>
+          Sign up
+        </span>
+      </p>
+    </div>
+  );
+};
+
+export default SignIn;
