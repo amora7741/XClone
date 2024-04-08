@@ -33,7 +33,10 @@ const SignIn = ({ onClick }) => {
         </Button>
         <p className='separator'>or</p>
         <form action=''>
-          <input placeholder='Phone, email, or username'></input>
+          <div className='fieldholder'>
+            <input name='login' id='login' required></input>
+            <label htmlFor='login'>Phone, email, or username</label>
+          </div>
         </form>
         <Button backgroundColor='white' textColor='black'>
           Next

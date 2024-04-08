@@ -160,22 +160,5 @@ button {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-
-    input {
-      width: 100%;
-      padding: 18px 7px;
-      background-color: transparent;
-      color: white;
-      border: 1px solid $dark-gray;
-      position: relative;
-      font-size: 1rem;
-      border-radius: 5px;
-
-      outline: none;
-
-      &:focus {
-        border: 1px solid $blue-primary;
-      }
-    }
   }
 }
