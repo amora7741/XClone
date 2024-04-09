@@ -69,6 +69,11 @@ body {
       font-size: 4rem;
       font-weight: 900;
     }
+
+    .jointoday,
+    .index-existingaccount {
+      width: 60%;
+    }
   }
 }
 
@@ -109,6 +114,7 @@ button {
 
 .signup-terms {
   color: $footer-color;
+  font-size: 0.8rem;
 
   a {
     color: $blue-primary;
@@ -177,7 +183,6 @@ button {
     p {
       margin-top: 5px;
       line-height: 1;
-      letter-spacing: -0.5px;
     }
   }
 

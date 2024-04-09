@@ -151,6 +151,28 @@ const CreateAccount = () => {
               <input type='text' name='password' id='password' required />
               <label htmlFor='password'>Password</label>
             </div>
+            <div className='fieldholder'>
+              <input
+                type='text'
+                name='confirm-password'
+                id='confirm-password'
+                required
+              />
+              <label htmlFor='confirm-password'>Confirm Password</label>
+            </div>
+            <p className='signup-terms'>
+              By signing up, you agree to the <span>Terms of Service</span> and{' '}
+              <span>Privacy Policy</span>, including <span>Cookie Use</span>. X
+              may use your contact information, including your email address and
+              phone number for purposes outlined in our Privacy Policy, like
+              keeping your account secure and personalizing our services,
+              including ads. <span>Learn more</span>. Others will be able to
+              find you by email or phone number, when provided, unless you
+              choose otherwise <span>here</span>.
+            </p>
+            <Button backgroundColor='white' textColor='black'>
+              Sign Up
+            </Button>
           </>
         )}
       </form>
