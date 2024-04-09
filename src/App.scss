@@ -166,7 +166,7 @@ button {
 .createaccount-container {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 75%;
   gap: 2rem;
 
   form {
@@ -179,5 +179,46 @@ button {
       line-height: 1;
       letter-spacing: -0.5px;
     }
+  }
+
+  button {
+    padding: 15px 0;
+    font-size: 1.2rem;
+  }
+
+  .birthday-container {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    align-self: center;
+    margin-bottom: 3rem;
+  }
+
+  select:first-child {
+    flex: 2;
+  }
+  select:last-child {
+    flex: 1;
+  }
+}
+
+select {
+  height: 50px;
+  cursor: pointer;
+  background-color: transparent;
+  color: $footer-color;
+  border-radius: 5px;
+  border: 1px solid $dark-gray;
+  outline: none;
+  font-size: 1rem;
+
+  option {
+    background-color: black;
+    color: white;
+    font-size: inherit;
+  }
+
+  &:focus {
+    border: 1px solid $blue-primary;
   }
 }
