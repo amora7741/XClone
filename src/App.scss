@@ -162,3 +162,22 @@ button {
     gap: 1.5rem;
   }
 }
+
+.createaccount-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 2rem;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    p {
+      margin-top: 5px;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+  }
+}
