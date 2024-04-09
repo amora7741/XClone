@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Button from './Button';
 
 const CreateAccount = () => {
-  const [secondPage, setSecondPage] = useState(false);
+  const [page, setPage] = useState(1);
   const [birthMonth, setBirthMonth] = useState('');
   const [birthDay, setBirthDay] = useState('');
   const [birthYear, setBirthYear] = useState('');
@@ -38,7 +38,7 @@ const CreateAccount = () => {
   return (
     <div className='createaccount-container'>
       <form action=''>
-        {!secondPage && (
+        {page === 1 && (
           <>
             <h1>Create your account</h1>
             <div className='fieldholder'>
@@ -111,14 +111,14 @@ const CreateAccount = () => {
             <Button
               backgroundColor='white'
               textColor='black'
-              onClick={() => setSecondPage(true)}
+              onClick={() => setPage(2)}
             >
               Next
             </Button>
           </>
         )}
 
-        {secondPage && (
+        {page === 2 && (
           <>
             <div>
               <h1>What should we call you?</h1>
@@ -130,6 +130,26 @@ const CreateAccount = () => {
               <input type='text' name='username' id='username' required />
               <label htmlFor='username'>Username</label>
               <p className='atsymbol'>@</p>
+            </div>
+            <Button
+              backgroundColor='white'
+              textColor='black'
+              onClick={() => setPage(3)}
+            >
+              Next
+            </Button>
+          </>
+        )}
+
+        {page === 3 && (
+          <>
+            <div>
+              <h1>You'll need a password</h1>
+              <p className='gray'>Make sure it's 8 characters or more.</p>
+            </div>
+            <div className='fieldholder'>
+              <input type='text' name='password' id='password' required />
+              <label htmlFor='password'>Password</label>
             </div>
           </>
         )}
