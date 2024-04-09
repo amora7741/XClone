@@ -57,6 +57,7 @@ const CreateAccount = () => {
           <div className='fieldholder'>
             <select
               name='birthMonth'
+              id='birthMonth'
               value={birthMonth}
               onChange={(e) => setBirthMonth(e.target.value)}
             >
@@ -74,6 +75,7 @@ const CreateAccount = () => {
           <div className='fieldholder'>
             <select
               name='birthDay'
+              id='birthDay'
               value={birthDay}
               onChange={(e) => setBirthDay(e.target.value)}
             >
@@ -89,6 +91,7 @@ const CreateAccount = () => {
           <div className='fieldholder'>
             <select
               name='birthYear'
+              id='birthYear'
               value={birthYear}
               onChange={(e) => setBirthYear(e.target.value)}
             >
