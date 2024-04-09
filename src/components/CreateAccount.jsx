@@ -54,44 +54,53 @@ const CreateAccount = () => {
           </p>
         </div>
         <div className='birthday-container'>
-          <select
-            name='birthMonth'
-            value={birthMonth}
-            onChange={(e) => setBirthMonth(e.target.value)}
-          >
-            <option value=''>Month</option>
-            {Array.from({ length: 12 }, (_, index) => (
-              <option key={index} value={index + 1}>
-                {new Date(0, index).toLocaleString('default', {
-                  month: 'long',
-                })}
-              </option>
-            ))}
-          </select>
-          <select
-            name='birthDay'
-            value={birthDay}
-            onChange={(e) => setBirthDay(e.target.value)}
-          >
-            <option value=''>Day</option>
-            {daysInMonth.map((day) => (
-              <option key={day} value={day}>
-                {day}
-              </option>
-            ))}
-          </select>
-          <select
-            name='birthYear'
-            value={birthYear}
-            onChange={(e) => setBirthYear(e.target.value)}
-          >
-            <option value=''>Year</option>
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
+          <div className='fieldholder'>
+            <select
+              name='birthMonth'
+              value={birthMonth}
+              onChange={(e) => setBirthMonth(e.target.value)}
+            >
+              <option value=''></option>
+              {Array.from({ length: 12 }, (_, index) => (
+                <option key={index} value={index + 1}>
+                  {new Date(0, index).toLocaleString('default', {
+                    month: 'long',
+                  })}
+                </option>
+              ))}
+            </select>
+            <label htmlFor='birthMonth'>Month</label>
+          </div>
+          <div className='fieldholder'>
+            <select
+              name='birthDay'
+              value={birthDay}
+              onChange={(e) => setBirthDay(e.target.value)}
+            >
+              <option value=''></option>
+              {daysInMonth.map((day) => (
+                <option key={day} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
+            <label htmlFor='birthDay'>Day</label>
+          </div>
+          <div className='fieldholder'>
+            <select
+              name='birthYear'
+              value={birthYear}
+              onChange={(e) => setBirthYear(e.target.value)}
+            >
+              <option value=''></option>
+              {years.map((year) => (
+                <option key={year} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+            <label htmlFor='birthYear'>Year</label>
+          </div>
         </div>
       </form>
       <Button backgroundColor='white' textColor='black'>

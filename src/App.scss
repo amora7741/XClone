@@ -192,13 +192,27 @@ button {
     gap: 1rem;
     align-self: center;
     margin-bottom: 3rem;
-  }
 
-  select:first-child {
-    flex: 2;
-  }
-  select:last-child {
-    flex: 1;
+    .fieldholder {
+      select {
+        width: 100%;
+        padding-top: 20px;
+      }
+
+      &:first-child {
+        flex: 2;
+      }
+
+      &:not(:first-child) {
+        flex: 1;
+      }
+
+      label {
+        top: -15px;
+        left: 5px;
+        font-size: 0.8rem;
+      }
+    }
   }
 }
 
@@ -206,11 +220,11 @@ select {
   height: 50px;
   cursor: pointer;
   background-color: transparent;
-  color: $footer-color;
+  color: white;
   border-radius: 5px;
   border: 1px solid $dark-gray;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.05rem;
 
   option {
     background-color: black;
@@ -220,5 +234,9 @@ select {
 
   &:focus {
     border: 1px solid $blue-primary;
+
+    + label {
+      color: $blue-primary;
+    }
   }
 }
