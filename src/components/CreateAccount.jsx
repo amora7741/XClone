@@ -129,6 +129,7 @@ const CreateAccount = () => {
             <div className='fieldholder'>
               <input type='text' name='username' id='username' required />
               <label htmlFor='username'>Username</label>
+              <p className='atsymbol'>@</p>
             </div>
           </>
         )}
