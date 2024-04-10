@@ -3,6 +3,7 @@ const Button = ({
   textColor,
   onClick,
   borderColor,
+  type = 'button',
   children,
 }) => {
   const buttonStyle = {
@@ -12,7 +13,7 @@ const Button = ({
   };
 
   return (
-    <button style={buttonStyle} onClick={onClick}>
+    <button style={buttonStyle} onClick={onClick} type={type}>
       {children}
     </button>
   );

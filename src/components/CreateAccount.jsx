@@ -170,7 +170,7 @@ const CreateAccount = () => {
               find you by email or phone number, when provided, unless you
               choose otherwise <span>here</span>.
             </p>
-            <Button backgroundColor='white' textColor='black'>
+            <Button backgroundColor='white' textColor='black' type='submit'>
               Sign Up
             </Button>
           </>
