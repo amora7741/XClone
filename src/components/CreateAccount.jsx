@@ -57,7 +57,7 @@ const CreateAccount = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_BASE_API}/users`;
+    const url = `${import.meta.env.VITE_BASE_API}/api/users`;
 
     try {
       const response = await axios.post(url, formData);
