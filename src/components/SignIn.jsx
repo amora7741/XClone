@@ -48,7 +48,7 @@ const SignIn = ({ onClick }) => {
                   value={loginCredentials}
                   onChange={(e) => setLoginCredentials(e.target.value)}
                 />
-                <label htmlFor='login'>Phone, email, or username</label>
+                <label htmlFor='login'>Email or username</label>
               </div>
             </form>
             <Button
@@ -88,7 +88,7 @@ const SignIn = ({ onClick }) => {
                 value={loginCredentials}
                 disabled
               />
-              <label htmlFor='login'>Phone, email, or username</label>
+              <label htmlFor='login'>Email or username</label>
             </div>
             <div className='fieldholder'>
               <input
