@@ -95,7 +95,8 @@ $overlay-background: rgba(91, 112, 131, 0.4);
   }
 
   input:focus + label,
-  input:valid + label {
+  input:valid + label,
+  input:disabled + label {
     font-size: 0.8rem;
     top: -15px;
   }
@@ -111,5 +112,15 @@ $overlay-background: rgba(91, 112, 131, 0.4);
 
   input:focus + label {
     color: App.$blue-primary;
+  }
+
+  input:disabled {
+    color: rgb(77, 77, 77);
+    background-color: rgb(12, 12, 12);
+    border: none;
+
+    + label {
+      color: rgb(77, 77, 77);
+    }
   }
 }
