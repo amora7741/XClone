@@ -1,14 +1,35 @@
 import { useState } from 'react';
 import Button from './Button';
+import axios from 'axios';
 
 const SignIn = ({ onClick }) => {
   const notImplemented = () => {
     alert('Not implemented yet :(');
   };
 
-  const [loginCredentials, setLoginCredentials] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ username: '', password: '' });
   const [secondPage, setSecondPage] = useState(false);
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const url = `${import.meta.env.VITE_BASE_API}/api/auth/login`;
+
+    try {
+      const response = await axios.post(url, formData);
+
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   return (
     <div className='signin-container'>
@@ -42,13 +63,13 @@ const SignIn = ({ onClick }) => {
             <form>
               <div className='fieldholder'>
                 <input
-                  name='login'
-                  id='login'
+                  name='username'
+                  id='username'
                   required
-                  value={loginCredentials}
-                  onChange={(e) => setLoginCredentials(e.target.value)}
+                  value={formData.username}
+                  onChange={handleInputChange}
                 />
-                <label htmlFor='login'>Email or username</label>
+                <label htmlFor='username'>Email or username</label>
               </div>
             </form>
             <Button
@@ -82,21 +103,21 @@ const SignIn = ({ onClick }) => {
           <form className='signin-form second'>
             <div className='fieldholder'>
               <input
-                name='login'
-                id='login'
+                name='username'
+                id='username'
                 required
-                value={loginCredentials}
+                value={formData.username}
                 disabled
               />
-              <label htmlFor='login'>Email or username</label>
+              <label htmlFor='username'>Email or username</label>
             </div>
             <div className='fieldholder'>
               <input
                 name='password'
                 id='password'
                 required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleInputChange}
               />
               <label htmlFor='password'>Password</label>
             </div>
