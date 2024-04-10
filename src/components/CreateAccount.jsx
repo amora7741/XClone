@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
 import Button from './Button';
+import axios from 'axios';
 
 const CreateAccount = () => {
   const [page, setPage] = useState(1);
-  const [birthMonth, setBirthMonth] = useState('');
-  const [birthDay, setBirthDay] = useState('');
-  const [birthYear, setBirthYear] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    birthMonth: '',
+    birthDay: '',
+    birthYear: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+  });
   const [daysInMonth, setDaysInMonth] = useState(
     Array.from({ length: 31 }, (_, index) => index + 1)
   );
@@ -19,15 +27,19 @@ const CreateAccount = () => {
       return Array.from({ length: 31 }, (_, index) => index + 1);
     };
 
-    setDaysInMonth(updateDays(birthMonth, birthYear));
+    setDaysInMonth(updateDays(formData.birthMonth, formData.birthYear));
 
-    if (birthDay) {
-      const maxDays = new Date(birthYear, birthMonth, 0).getDate();
-      if (birthDay > maxDays) {
-        setBirthDay('');
+    if (formData.birthDay) {
+      const maxDays = new Date(
+        formData.birthYear,
+        formData.birthMonth,
+        0
+      ).getDate();
+      if (formData.birthDay > maxDays) {
+        setFormData({ ...formData, birthDay: '' });
       }
     }
-  }, [birthMonth, birthYear, birthDay]);
+  }, [formData.birthMonth, formData.birthYear, formData.birthDay]);
 
   const currentYear = new Date().getFullYear();
   const years = Array.from(
@@ -35,18 +47,53 @@ const CreateAccount = () => {
     (_, index) => currentYear - index
   );
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const url = `${import.meta.env.VITE_BASE_API}/users`;
+
+    try {
+      const response = await axios.post(url, formData);
+
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className='createaccount-container'>
-      <form action=''>
+      <form onSubmit={handleFormSubmit}>
         {page === 1 && (
           <>
             <h1>Create your account</h1>
             <div className='fieldholder'>
-              <input type='text' required name='name' id='name' />
+              <input
+                type='text'
+                required
+                name='name'
+                id='name'
+                value={formData.name}
+                onChange={handleInputChange}
+              />
               <label htmlFor='name'>Name</label>
             </div>
             <div className='fieldholder'>
-              <input type='email' required name='email' id='email' />
+              <input
+                type='email'
+                required
+                name='email'
+                id='email'
+                value={formData.email}
+                onChange={handleInputChange}
+              />
               <label htmlFor='email'>Email</label>
             </div>
             <div>
@@ -61,8 +108,8 @@ const CreateAccount = () => {
                 <select
                   name='birthMonth'
                   id='birthMonth'
-                  value={birthMonth}
-                  onChange={(e) => setBirthMonth(e.target.value)}
+                  value={formData.birthMonth}
+                  onChange={handleInputChange}
                 >
                   <option value=''></option>
                   {Array.from({ length: 12 }, (_, index) => (
@@ -79,8 +126,8 @@ const CreateAccount = () => {
                 <select
                   name='birthDay'
                   id='birthDay'
-                  value={birthDay}
-                  onChange={(e) => setBirthDay(e.target.value)}
+                  value={formData.birthDay}
+                  onChange={handleInputChange}
                 >
                   <option value=''></option>
                   {daysInMonth.map((day) => (
@@ -95,8 +142,8 @@ const CreateAccount = () => {
                 <select
                   name='birthYear'
                   id='birthYear'
-                  value={birthYear}
-                  onChange={(e) => setBirthYear(e.target.value)}
+                  value={formData.birthYear}
+                  onChange={handleInputChange}
                 >
                   <option value=''></option>
                   {years.map((year) => (
@@ -127,7 +174,14 @@ const CreateAccount = () => {
               </p>
             </div>
             <div className='fieldholder'>
-              <input type='text' name='username' id='username' required />
+              <input
+                type='text'
+                name='username'
+                id='username'
+                required
+                value={formData.username}
+                onChange={handleInputChange}
+              />
               <label htmlFor='username'>Username</label>
               <p className='atsymbol'>@</p>
             </div>
@@ -148,17 +202,26 @@ const CreateAccount = () => {
               <p className='gray'>Make sure it's 8 characters or more.</p>
             </div>
             <div className='fieldholder'>
-              <input type='text' name='password' id='password' required />
+              <input
+                type='text'
+                name='password'
+                id='password'
+                required
+                value={formData.password}
+                onChange={handleInputChange}
+              />
               <label htmlFor='password'>Password</label>
             </div>
             <div className='fieldholder'>
               <input
                 type='text'
-                name='confirm-password'
-                id='confirm-password'
+                name='confirmPassword'
+                id='confirmPassword'
                 required
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
               />
-              <label htmlFor='confirm-password'>Confirm Password</label>
+              <label htmlFor='confirmPassword'>Confirm Password</label>
             </div>
             <p className='signup-terms'>
               By signing up, you agree to the <span>Terms of Service</span> and{' '}
