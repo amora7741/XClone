@@ -100,7 +100,7 @@ const SignIn = ({ onClick }) => {
       {secondPage && (
         <>
           <h2>Enter your password</h2>
-          <form className='signin-form second'>
+          <form className='signin-form second' onSubmit={handleFormSubmit}>
             <div className='fieldholder'>
               <input
                 name='username'
