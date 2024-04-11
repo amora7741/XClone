@@ -15,7 +15,9 @@ const SignIn = ({ onClick }) => {
     const url = `${import.meta.env.VITE_BASE_API}/api/auth/login`;
 
     try {
-      const response = await axios.post(url, formData);
+      const response = await axios.post(url, formData, {
+        withCredentials: true,
+      });
 
       console.log(response);
     } catch (err) {
