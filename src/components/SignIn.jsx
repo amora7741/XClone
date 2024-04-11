@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Button from './Button';
-import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 const SignIn = ({ onClick }) => {
+  const { login } = useContext(AuthContext);
+
   const notImplemented = () => {
     alert('Not implemented yet :(');
   };
@@ -12,17 +14,8 @@ const SignIn = ({ onClick }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_BASE_API}/api/auth/login`;
 
-    try {
-      const response = await axios.post(url, formData, {
-        withCredentials: true,
-      });
-
-      console.log(response);
-    } catch (err) {
-      console.error(err);
-    }
+    login(formData);
   };
 
   const handleInputChange = (e) => {
