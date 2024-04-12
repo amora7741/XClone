@@ -1,10 +1,6 @@
 import Button from './Button';
-import { useContext } from 'react';
-
-import { AuthContext } from '../context/AuthContext';
 
 const JoinToday = ({ onClick }) => {
-  const { checkAuth } = useContext(AuthContext);
   const futureImplement = () => {
     alert('Not implemented yet :(');
   };
@@ -13,7 +9,11 @@ const JoinToday = ({ onClick }) => {
     <div className='jointoday'>
       <h2>Join today.</h2>
       <div className='jointoday-signup'>
-        <Button backgroundColor='white' textColor='black' onClick={checkAuth}>
+        <Button
+          backgroundColor='white'
+          textColor='black'
+          onClick={() => futureImplement()}
+        >
           <img
             src='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg'
             className='button-icon'

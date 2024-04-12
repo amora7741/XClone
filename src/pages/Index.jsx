@@ -3,11 +3,14 @@ import Footer from '../components/Footer';
 import JoinToday from '../components/JoinToday';
 import Button from '../components/Button';
 import AuthModal from '../components/AuthModal';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [initialMode, setInitialMode] = useState('');
+  const { user } = useContext(AuthContext);
 
   const openModal = (mode) => {
     setInitialMode(mode);
@@ -16,6 +19,7 @@ const Index = () => {
 
   return (
     <div className='index-container'>
+      {user && <Navigate to='/home' replace={true} />}
       <main className='index-main'>
         <img src={XIcon} alt='X Icon' id='xicon' className='index-icon' />
         <div className='index-main-right'>

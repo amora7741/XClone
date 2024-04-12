@@ -35,15 +35,11 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(user);
-  }, [user]);
-
-  useEffect(() => {
     checkAuth();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, checkAuth }}>
+    <AuthContext.Provider value={{ login, checkAuth, user }}>
       {children}
     </AuthContext.Provider>
   );
