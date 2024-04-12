@@ -1,11 +1,10 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
 
 export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   const login = async (data) => {
     const url = `${import.meta.env.VITE_BASE_API}/api/auth/login`;
@@ -15,13 +14,37 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       });
 
-      console.log(response);
+      setUser(response.data.user);
     } catch (err) {
       console.error(err);
+      setUser(null);
     }
   };
 
+  const checkAuth = async () => {
+    const url = `${import.meta.env.VITE_BASE_API}/api/auth/validate`;
+
+    try {
+      const response = await axios.get(url, { withCredentials: true });
+
+      setUser(response.data.user);
+    } catch (err) {
+      console.error(err);
+      setUser(null);
+    }
+  };
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ login }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ login, checkAuth }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
