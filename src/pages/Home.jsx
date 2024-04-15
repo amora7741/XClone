@@ -1,20 +1,29 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import Header from '../components/Header';
-import Loading from '../components/Loading';
+import AuthModal from '../components/AuthModal';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const { authCheckLoading, user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  const handleModalClose = () => {
+    navigate('/');
+  };
+
   return (
     <>
-      {authCheckLoading ? (
-        <Loading />
+      {!user ? (
+        <AuthModal
+          initialMode={'signIn'}
+          open={!user}
+          onClose={() => handleModalClose()}
+        />
       ) : (
-        <>
-          <main className='home'>
-            <Header />
-          </main>
-        </>
+        <main className='home-main'>
+          <h1>Hello</h1>
+          <h2>Main page</h2>
+        </main>
       )}
     </>
   );
