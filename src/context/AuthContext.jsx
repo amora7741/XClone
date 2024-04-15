@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [authCheckLoading, setAuthCheckLoading] = useState(false);
 
   const login = async (data) => {
     const url = `${import.meta.env.VITE_BASE_API}/api/auth/login`;
@@ -29,12 +30,15 @@ export const AuthProvider = ({ children }) => {
     const url = `${import.meta.env.VITE_BASE_API}/api/auth/validate`;
 
     try {
+      setAuthCheckLoading(true);
       const response = await axios.get(url, { withCredentials: true });
 
       setUser(response.data.user);
     } catch (err) {
       console.error(err);
       setUser(null);
+    } finally {
+      setAuthCheckLoading(false);
     }
   };
 
@@ -43,7 +47,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, checkAuth, user }}>
+    <AuthContext.Provider value={{ login, user, authCheckLoading }}>
       {children}
     </AuthContext.Provider>
   );

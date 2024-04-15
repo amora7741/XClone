@@ -27,6 +27,11 @@ body {
   height: auto;
 }
 
+.loading-icon {
+  width: 100px;
+  height: auto;
+}
+
 .index-container {
   min-height: 100vh;
   display: flex;
@@ -317,6 +322,7 @@ header {
   justify-content: space-between;
   max-height: 100vh;
   position: sticky;
+  padding: 20px 0;
   top: 0;
 
   .xicon.small {
@@ -327,4 +333,11 @@ header {
     font-size: 1rem;
     padding: 15px;
   }
+}
+
+.loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

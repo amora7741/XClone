@@ -1,13 +1,22 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Header from '../components/Header';
+import Loading from '../components/Loading';
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
+  const { authCheckLoading, user } = useContext(AuthContext);
   return (
-    <main className='home'>
-      <Header />
-    </main>
+    <>
+      {authCheckLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <main className='home'>
+            <Header />
+          </main>
+        </>
+      )}
+    </>
   );
 };
 
