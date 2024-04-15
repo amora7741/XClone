@@ -1,4 +1,4 @@
-import XIcon from '../assets/icon.svg';
+import Icon from '../components/Icon';
 import Footer from '../components/Footer';
 import JoinToday from '../components/JoinToday';
 import Button from '../components/Button';
@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div className='index-container'>
       <main className='index-main'>
-        <img src={XIcon} alt='X Icon' className='xicon index-icon' />
+        <Icon classname='xicon index-icon' />
         <div className='index-main-right'>
           <h1>Happening now</h1>
           <JoinToday onClick={() => openModal('createAccount')} />

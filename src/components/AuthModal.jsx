@@ -5,7 +5,7 @@ import JoinToday from './JoinToday';
 import SignIn from './SignIn';
 import CreateAccount from './CreateAccount';
 import '../styles/AuthModal.scss';
-import XIcon from '../assets/icon.svg';
+import Icon from './Icon';
 import CloseIcon from '../assets/closebutton.svg';
 
 const AuthModal = ({ initialMode, open, onClose }) => {
@@ -18,7 +18,7 @@ const AuthModal = ({ initialMode, open, onClose }) => {
       <button id='closebutton' onClick={onClose}>
         <img src={CloseIcon} alt='Close button' />
       </button>
-      <img src={XIcon} alt='X Icon' className='xicon' />
+      <Icon classname='xicon' />
       {mode === 'signIn' && <SignIn onClick={() => toggleMode('signUp')} />}
       {mode === 'signUp' && (
         <>

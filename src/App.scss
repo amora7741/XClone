@@ -15,7 +15,7 @@ body {
 }
 
 .xicon {
-  filter: invert(100%);
+  fill: white;
 
   &.small {
     width: 25px;
@@ -279,6 +279,7 @@ select {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  min-height: 100vh;
 }
 
 nav {
@@ -313,9 +314,12 @@ nav {
 header {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
 
-  .xicon {
+  .xicon.small {
     margin-left: 10px;
   }
 

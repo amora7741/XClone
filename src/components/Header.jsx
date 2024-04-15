@@ -1,11 +1,12 @@
 import XIcon from '../assets/icon.svg';
 import Navbar from '../components/Navbar';
 import Button from '../components/Button';
+import Icon from './Icon';
 
 const Header = () => {
   return (
     <header>
-      <img src={XIcon} alt='X Icon' className='xicon small' />
+      <Icon classname='xicon small' />
       <Navbar />
       <Button backgroundColor='rgb(29, 155, 240)' textColor='white'>
         Post
