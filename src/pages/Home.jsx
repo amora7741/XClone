@@ -1,13 +1,12 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 
 const Home = () => {
   const { user } = useContext(AuthContext);
   return (
-    <main>
-      <h1>Home Page</h1>
-      <Navbar />
+    <main className='home'>
+      <Header />
     </main>
   );
 };

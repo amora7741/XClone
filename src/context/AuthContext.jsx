@@ -22,6 +22,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const checkAuth = async () => {
+    if (!document.cookie) {
+      return;
+    }
+
     const url = `${import.meta.env.VITE_BASE_API}/api/auth/validate`;
 
     try {

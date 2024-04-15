@@ -124,8 +124,10 @@ const NavbarItems = () => {
     <ul>
       {navItems.map((item, index) => (
         <li key={index}>
-          {item.icon}
-          <span>{item.label}</span>
+          <a href=''>
+            {item.icon}
+            <span>{item.label}</span>
+          </a>
         </li>
       ))}
     </ul>

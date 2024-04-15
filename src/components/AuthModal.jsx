@@ -18,7 +18,7 @@ const AuthModal = ({ initialMode, open, onClose }) => {
       <button id='closebutton' onClick={onClose}>
         <img src={CloseIcon} alt='Close button' />
       </button>
-      <img src={XIcon} alt='X Icon' id='xicon' />
+      <img src={XIcon} alt='X Icon' className='xicon' />
       {mode === 'signIn' && <SignIn onClick={() => toggleMode('signUp')} />}
       {mode === 'signUp' && (
         <>

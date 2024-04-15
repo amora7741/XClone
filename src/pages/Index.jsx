@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div className='index-container'>
       <main className='index-main'>
-        <img src={XIcon} alt='X Icon' id='xicon' className='index-icon' />
+        <img src={XIcon} alt='X Icon' className='xicon index-icon' />
         <div className='index-main-right'>
           <h1>Happening now</h1>
           <JoinToday onClick={() => openModal('createAccount')} />
