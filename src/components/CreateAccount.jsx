@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import Button from './Button';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CreateAccount = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -62,12 +64,18 @@ const CreateAccount = () => {
     try {
       const response = await axios.post(url, formData);
 
-      console.log(response);
+      if (response.statusText === 'Created') {
+        const currentPath = window.location.pathname;
+        if (currentPath === '/') {
+          window.location.reload();
+        } else {
+          navigate('/');
+        }
+      }
     } catch (err) {
       console.error(err);
     }
   };
-
   return (
     <div className='createaccount-container'>
       <form onSubmit={handleFormSubmit}>
