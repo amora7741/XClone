@@ -282,8 +282,8 @@ select {
 
 .pagecontainer {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
   min-height: 100vh;
 }
 
@@ -345,4 +345,6 @@ header {
 
 .home-main {
   justify-self: center;
+  width: 100%;
+  border: 1px solid $dark-gray;
 }
