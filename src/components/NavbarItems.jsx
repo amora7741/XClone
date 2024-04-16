@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const NavbarItems = () => {
   const navItems = [
     {
@@ -124,10 +126,10 @@ const NavbarItems = () => {
     <ul>
       {navItems.map((item, index) => (
         <li key={index}>
-          <a href=''>
+          <Link to=''>
             {item.icon}
             <span>{item.label}</span>
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

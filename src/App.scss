@@ -323,11 +323,17 @@ header {
   justify-content: space-between;
   max-height: 100vh;
   position: sticky;
-  padding: 20px 0;
+  padding: 10px 0;
   top: 0;
 
-  .xicon.small {
-    margin-left: 10px;
+  .xicon-home {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 9999px;
+
+    &:hover {
+      background-color: rgba(231, 233, 234, 0.1);
+    }
   }
 
   button {
