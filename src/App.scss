@@ -338,7 +338,14 @@ header {
 
   button {
     font-size: 1rem;
-    padding: 20px 15px;
+    padding: 15px;
+  }
+
+  .header-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-right: 3rem;
   }
 }
 
@@ -355,4 +362,28 @@ header {
   flex-direction: column;
   width: 100%;
   border: 1px solid $dark-gray;
+}
+
+.header-profile {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: space-between;
+
+  &-left {
+    display: flex;
+    gap: 10px;
+    .picture {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      border: 1px solid $dark-gray;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 }
