@@ -1,6 +1,8 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import CloseButton from './CloseButton';
+import Button from './Button';
+import TweetTools from './TweetTools';
 import '../styles/TweetModal.scss';
 
 const TweetModal = ({ open, onClose }) => {
@@ -14,6 +16,19 @@ const TweetModal = ({ open, onClose }) => {
         <form>
           <textarea placeholder='What is happening?!' />
         </form>
+      </div>
+      <div className='tweet-tools-container'>
+        <hr />
+        <div className='tweet-tools'>
+          <TweetTools />
+          <Button
+            backgroundColor='rgb(29, 155, 240)'
+            textColor='white'
+            onClick={() => alert('fart')}
+          >
+            Post
+          </Button>
+        </div>
       </div>
     </Popup>
   );
