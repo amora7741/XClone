@@ -6,7 +6,7 @@ import SignIn from './SignIn';
 import CreateAccount from './CreateAccount';
 import '../styles/AuthModal.scss';
 import Icon from './Icon';
-import CloseIcon from '../assets/closebutton.svg';
+import CloseButton from './CloseButton';
 
 const AuthModal = ({ initialMode, open, onClose }) => {
   const [mode, setMode] = useState(initialMode);
@@ -16,7 +16,7 @@ const AuthModal = ({ initialMode, open, onClose }) => {
   return (
     <Popup open={open} onClose={onClose} modal closeOnDocumentClick={false}>
       <button id='closebutton' onClick={onClose}>
-        <img src={CloseIcon} alt='Close button' />
+        <CloseButton />
       </button>
       <Icon classname='xicon' />
       {mode === 'signIn' && <SignIn onClick={() => toggleMode('signUp')} />}
