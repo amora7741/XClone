@@ -3,6 +3,7 @@ import Button from './Button';
 import Icon from './Icon';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import TweetModal from './TweetModal';
 
 const Header = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -13,10 +14,17 @@ const Header = () => {
           <Icon classname='xicon small' />
         </Link>
         <Navbar />
-        <Button backgroundColor='rgb(29, 155, 240)' textColor='white'>
+        <Button
+          backgroundColor='rgb(29, 155, 240)'
+          textColor='white'
+          onClick={() => setModalOpen(true)}
+        >
           Post
         </Button>
       </header>
+      {modalOpen && (
+        <TweetModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      )}
     </>
   );
 };
