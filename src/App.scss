@@ -284,7 +284,7 @@ select {
 .pagecontainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
+  gap: 10px;
   min-height: 100vh;
 }
 
@@ -368,6 +368,8 @@ header {
 .header-profile {
   display: flex;
   margin-bottom: 1rem;
+  background-color: transparent;
+  color: inherit;
   align-items: center;
   border-radius: 9999px;
   padding: 10px;
@@ -392,7 +394,15 @@ header {
     .profile-info {
       display: flex;
       flex-direction: column;
+      gap: 5px;
       justify-content: center;
+      align-items: start;
+
+      p {
+        font-weight: normal;
+        font-size: 0.85rem;
+        color: $footer-color;
+      }
     }
   }
 

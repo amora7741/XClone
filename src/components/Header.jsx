@@ -33,7 +33,7 @@ const Header = () => {
           positions={['top', 'bottom', 'left', 'right']}
           content={<h1>Hello there!</h1>}
         >
-          <div
+          <button
             className='header-profile'
             onClick={() => setPopoverOpen(!popoverOpen)}
           >
@@ -49,7 +49,7 @@ const Header = () => {
                 <path d='M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'></path>
               </g>
             </svg>
-          </div>
+          </button>
         </Popover>
       </header>
       {modalOpen && (
