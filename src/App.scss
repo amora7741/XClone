@@ -363,6 +363,28 @@ header {
   flex-direction: column;
   width: 100%;
   border: 1px solid $dark-gray;
+
+  .home-buttoncontainer {
+    display: flex;
+    border-bottom: 1px solid $dark-gray;
+
+    button {
+      border-radius: 0;
+      padding: 20px 0;
+      background-color: transparent;
+      color: $footer-color;
+      font-weight: normal;
+
+      &.active {
+        color: white;
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: rgb(13, 13, 13);
+      }
+    }
+  }
 }
 
 .header-profile {
