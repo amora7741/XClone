@@ -8,7 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 import { Popover } from 'react-tiny-popover';
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const [modalOpen, setModalOpen] = useState(false);
   const [popoverOpen, setPopoverOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const Header = () => {
         <Popover
           isOpen={popoverOpen}
           positions={['top', 'bottom', 'left', 'right']}
-          content={<h1>Hello there!</h1>}
+          content={<h1 onClick={() => logout()}>Hello there!</h1>}
         >
           <button
             className='header-profile'

@@ -22,6 +22,20 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const logout = async () => {
+    const url = `${import.meta.env.VITE_BASE_API}/api/auth/logout`;
+
+    try {
+      const response = await axios.get(url, { withCredentials: true });
+
+      console.log(response);
+    } catch (err) {
+      alert(err);
+    } finally {
+      setUser(null);
+    }
+  };
+
   const checkAuth = async () => {
     if (!document.cookie) {
       return;
@@ -47,7 +61,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, user, authCheckLoading }}>
+    <AuthContext.Provider value={{ login, logout, user, authCheckLoading }}>
       {children}
     </AuthContext.Provider>
   );
