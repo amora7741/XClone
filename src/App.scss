@@ -1,6 +1,7 @@
 $footer-color: rgb(113, 118, 123);
 $blue-primary: rgb(29, 155, 240);
 $dark-gray: rgb(51, 54, 57);
+$hover-color: rgba(231, 233, 234, 0.1);
 
 * {
   margin: 0;
@@ -310,7 +311,7 @@ nav {
       }
 
       &:hover {
-        background-color: rgba(231, 233, 234, 0.1);
+        background-color: $hover-color;
       }
     }
   }
@@ -332,7 +333,7 @@ header {
     border-radius: 9999px;
 
     &:hover {
-      background-color: rgba(231, 233, 234, 0.1);
+      background-color: $hover-color;
     }
   }
 
@@ -368,11 +369,19 @@ header {
   display: flex;
   margin-bottom: 1rem;
   align-items: center;
+  border-radius: 9999px;
+  padding: 10px;
+  cursor: pointer;
   justify-content: space-between;
+
+  &:hover {
+    background-color: $hover-color;
+  }
 
   &-left {
     display: flex;
     gap: 10px;
+
     .picture {
       width: 40px;
       height: 40px;
@@ -385,5 +394,9 @@ header {
       flex-direction: column;
       justify-content: center;
     }
+  }
+
+  .nav-icon {
+    width: 1.25rem;
   }
 }

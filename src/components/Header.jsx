@@ -5,10 +5,13 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import TweetModal from './TweetModal';
 import { AuthContext } from '../context/AuthContext';
+import { Popover } from 'react-tiny-popover';
 
 const Header = () => {
   const { user } = useContext(AuthContext);
   const [modalOpen, setModalOpen] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
   return (
     <>
       <header>
@@ -25,15 +28,29 @@ const Header = () => {
             Post
           </Button>
         </div>
-        <div className='header-profile'>
-          <div className='header-profile-left'>
-            <div className='picture'></div>
-            <div className='profile-info'>
-              <h5>{user.name}</h5>
-              <p>@{user.username}</p>
+        <Popover
+          isOpen={popoverOpen}
+          positions={['top', 'bottom', 'left', 'right']}
+          content={<h1>Hello there!</h1>}
+        >
+          <div
+            className='header-profile'
+            onClick={() => setPopoverOpen(!popoverOpen)}
+          >
+            <div className='header-profile-left'>
+              <div className='picture'></div>
+              <div className='profile-info'>
+                <h5>{user.name}</h5>
+                <p>@{user.username}</p>
+              </div>
             </div>
+            <svg viewBox='0 0 24 24' aria-hidden='true' className='nav-icon'>
+              <g>
+                <path d='M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'></path>
+              </g>
+            </svg>
           </div>
-        </div>
+        </Popover>
       </header>
       {modalOpen && (
         <TweetModal open={modalOpen} onClose={() => setModalOpen(false)} />
