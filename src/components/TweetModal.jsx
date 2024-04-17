@@ -5,11 +5,26 @@ import Button from './Button';
 import TweetTools from './TweetTools';
 import '../styles/TweetModal.scss';
 import { useState } from 'react';
+import axios from 'axios';
 
 const TweetModal = ({ open, onClose }) => {
   const [tweet, setTweet] = useState('');
-  const sendTweet = () => {
-    alert(tweet);
+  const sendTweet = async () => {
+    const url = `${import.meta.env.VITE_BASE_API}/api/posts/`;
+
+    try {
+      const response = await axios.post(
+        url,
+        { post_text: tweet },
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
