@@ -4,8 +4,14 @@ import CloseButton from './CloseButton';
 import Button from './Button';
 import TweetTools from './TweetTools';
 import '../styles/TweetModal.scss';
+import { useState } from 'react';
 
 const TweetModal = ({ open, onClose }) => {
+  const [tweet, setTweet] = useState('');
+  const sendTweet = () => {
+    alert(tweet);
+  };
+
   return (
     <Popup open={open} onClose={onClose} modal className='tweet-modal'>
       <button id='closebutton' onClick={onClose}>
@@ -14,7 +20,13 @@ const TweetModal = ({ open, onClose }) => {
       <div className='tweet-container'>
         <div className='profile-picture'></div>
         <form>
-          <textarea placeholder='What is happening?!' />
+          <textarea
+            placeholder='What is happening?!'
+            name='tweet-text'
+            id='tweet-text'
+            value={tweet}
+            onChange={(e) => setTweet(e.target.value)}
+          />
         </form>
       </div>
       <div className='tweet-tools-container'>
@@ -24,7 +36,7 @@ const TweetModal = ({ open, onClose }) => {
           <Button
             backgroundColor='rgb(29, 155, 240)'
             textColor='white'
-            onClick={() => alert('fart')}
+            onClick={() => sendTweet()}
           >
             Post
           </Button>
