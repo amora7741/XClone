@@ -1,31 +1,31 @@
 import { useEffect, useState } from 'react';
-import { Oval } from 'react-loader-spinner';
+import LoadingSpinner from './LoadingSpinner';
+import axios from 'axios';
 
 const ForYou = () => {
   const [loading, setLoading] = useState(false);
+  const [tweetsData, setTweetsData] = useState([]);
 
-  return (
-    <>
-      {loading ? (
-        <Oval
-          wrapperClass='spinner'
-          height={25}
-          color='rgb(29, 155, 240)'
-          secondaryColor='rgb(51, 54, 57)'
-          strokeWidth={6}
-        />
-      ) : (
-        <>
-          <div className='post'>
-            <p>This is the first post</p>
-          </div>
-          <div className='post'>
-            <p>This is the second post</p>
-          </div>
-        </>
-      )}
-    </>
-  );
+  const getPosts = async () => {
+    const url = `${import.meta.env.VITE_BASE_API}/api/posts`;
+
+    try {
+      setLoading(true);
+      const response = await axios.get(url, { withCredentials: true });
+
+      setTweetsData(response.data);
+    } catch (err) {
+      alert(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  return <>{loading ? <LoadingSpinner /> : <h1>Hello</h1>}</>;
 };
 
 export default ForYou;
