@@ -39,13 +39,13 @@ const Home = () => {
               onClick={() => handleButtonClick('ForYou')}
               className={activeButton === 'ForYou' ? 'active' : ''}
             >
-              For you
+              <p>For you</p>
             </button>
             <button
               onClick={() => handleButtonClick('Following')}
               className={activeButton === 'Following' ? 'active' : ''}
             >
-              Following
+              <p>Following</p>
             </button>
           </div>
           <div className='post-container'>

@@ -370,23 +370,31 @@ header {
 
     button {
       border-radius: 0;
-      padding: 20px 0;
+      padding: unset;
       background-color: transparent;
-      color: $footer-color;
-      font-weight: normal;
-      position: relative;
+
+      p {
+        color: $footer-color;
+        font-weight: normal;
+        height: 100%;
+        padding: 20px 0;
+        position: relative;
+      }
 
       &.active {
-        color: white;
-        font-weight: bold;
-        &:after {
-          content: '';
-          position: absolute;
-          left: 50;
-          bottom: 0;
-          width: 4.5rem;
-          height: 3px;
-          background-color: $blue-primary;
+        p {
+          color: white;
+          font-weight: bold;
+
+          &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: $blue-primary;
+          }
         }
       }
 
