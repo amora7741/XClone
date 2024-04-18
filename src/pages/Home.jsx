@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import AuthModal from '../components/AuthModal';
 import { useNavigate } from 'react-router-dom';
+import ForYou from '../components/ForYou';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const Home = () => {
             </button>
           </div>
           <div className='post-container'>
-            {activeButton === 'ForYou' && <div>For you</div>}
+            {activeButton === 'ForYou' && <ForYou />}
             {activeButton === 'Following' && <div>Following</div>}
           </div>
         </main>
