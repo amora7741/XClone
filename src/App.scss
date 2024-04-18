@@ -502,7 +502,7 @@ header {
 .tweet {
   display: flex;
   gap: 10px;
-  padding: 10px;
+  padding: 10px 15px;
   text-decoration: none;
   color: inherit;
   width: 100%;
@@ -540,18 +540,44 @@ header {
         background-color: transparent;
         border-radius: 9999px;
 
-        &:hover {
-          background-color: $hover-color;
-        }
-
         svg {
           fill: $footer-color;
           width: 15px;
+        }
+
+        &:hover {
+          background-color: $hover-color;
+
+          > svg {
+            fill: $blue-primary;
+          }
         }
       }
     }
 
     &-text {
+      margin-top: -5px;
+    }
+  }
+  .tweet-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    button {
+      width: fit-content;
+      padding: 0;
+      background-color: transparent;
+
+      svg {
+        fill: $footer-color;
+        width: 20px;
+      }
+    }
+
+    .bookmark-share {
+      display: flex;
+      gap: 1rem;
     }
   }
 }
