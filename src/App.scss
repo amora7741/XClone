@@ -13,6 +13,8 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: black;
   color: white;
+  scrollbar-color: $footer-color $dark-gray;
+  scrollbar-width: thin;
 }
 
 .xicon {
@@ -327,6 +329,7 @@ header {
   gap: 1rem;
   justify-content: space-between;
   max-height: 100vh;
+  overflow: auto;
   position: sticky;
   padding: 10px 0;
   top: 0;
