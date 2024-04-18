@@ -3,6 +3,7 @@ import { AuthContext } from '../context/AuthContext';
 import AuthModal from '../components/AuthModal';
 import { useNavigate } from 'react-router-dom';
 import ForYou from '../components/ForYou';
+import TweetForm from '../components/TweetForm';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -49,6 +50,10 @@ const Home = () => {
               <p>Following</p>
             </button>
           </div>
+          <div className='home-formcontainer'>
+            <TweetForm />
+          </div>
+          <hr />
           <div className='post-container'>
             {activeButton === 'ForYou' && <ForYou />}
             {activeButton === 'Following' && <div>Following</div>}

@@ -17,10 +17,10 @@ const ForYou = () => {
       ) : (
         <>
           <div className='post'>
-            <h1>This is the first post</h1>
+            <p>This is the first post</p>
           </div>
           <div className='post'>
-            <h1>This is the second post</h1>
+            <p>This is the second post</p>
           </div>
         </>
       )}
