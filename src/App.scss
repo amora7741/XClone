@@ -413,8 +413,7 @@ header {
 
 .header-profile {
   display: flex;
-  margin-bottom: 16px;
-  margin-top: 32px;
+  margin: 16px 0;
   background-color: transparent;
   color: inherit;
   align-items: center;
@@ -540,6 +539,11 @@ header {
     justify-content: space-between;
     align-items: center;
 
+    button {
+      width: fit-content;
+      padding: 10px 20px;
+    }
+
     &-icons {
       display: flex;
 
@@ -566,11 +570,6 @@ hr {
   border: none;
   height: 1px;
   background-color: #333;
-}
-
-button {
-  width: fit-content;
-  padding: 10px 20px;
 }
 
 .home-formcontainer {
