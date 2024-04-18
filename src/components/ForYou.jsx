@@ -38,8 +38,12 @@ const ForYou = () => {
       ) : (
         <div className='tweets-container'>
           {tweetsData.map((tweet) => (
-            <Link to={tweet._id} className='tweet' key={tweet._id}>
-              <Tweet user={tweet.user.username} content={tweet.text} />
+            <Link
+              to={`/${tweet.user.username}/status/${tweet._id}`}
+              className='tweet'
+              key={tweet._id}
+            >
+              <Tweet user={tweet.user} content={tweet.text} />
             </Link>
           ))}
         </div>
