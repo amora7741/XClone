@@ -54,10 +54,8 @@ const Home = () => {
             <TweetForm />
           </div>
           <hr />
-          <div className='post-container'>
-            {activeButton === 'ForYou' && <ForYou />}
-            {activeButton === 'Following' && <div>Following</div>}
-          </div>
+          {activeButton === 'ForYou' && <ForYou />}
+          {activeButton === 'Following' && <div>Following</div>}
         </main>
       )}
     </>

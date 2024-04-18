@@ -8,7 +8,7 @@ const ForYou = () => {
   const [loading, setLoading] = useState(false);
   const [tweetsData, setTweetsData] = useState([]);
 
-  const getPosts = async () => {
+  const getTweets = async () => {
     const url = `${import.meta.env.VITE_BASE_API}/api/posts`;
 
     try {
@@ -24,7 +24,7 @@ const ForYou = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    getTweets();
   }, []);
 
   useEffect(() => {
@@ -36,9 +36,9 @@ const ForYou = () => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className='post-container'>
+        <div className='tweets-container'>
           {tweetsData.map((tweet) => (
-            <Link to={tweet._id} className='post' key={tweet._id}>
+            <Link to={tweet._id} className='tweet' key={tweet._id}>
               <Tweet user={tweet.user.username} content={tweet.text} />
             </Link>
           ))}
