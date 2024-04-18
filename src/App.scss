@@ -442,3 +442,26 @@ header {
     width: 1.25rem;
   }
 }
+
+.popover-container {
+  background-color: black;
+  border: 1px solid $dark-gray;
+  border-radius: 10px;
+  width: 15rem;
+  padding: 10px 0;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px,
+    rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+
+  button {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 12px 16px;
+    color: inherit;
+    display: flex;
+    justify-content: start;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}

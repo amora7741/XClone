@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import TweetModal from './TweetModal';
 import { AuthContext } from '../context/AuthContext';
 import { Popover } from 'react-tiny-popover';
+import LogoutPopover from './LogoutPopover';
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -30,8 +31,15 @@ const Header = () => {
         </div>
         <Popover
           isOpen={popoverOpen}
+          padding={1}
           positions={['top', 'bottom', 'left', 'right']}
-          content={<h1 onClick={() => logout()}>Hello there!</h1>}
+          content={
+            <LogoutPopover
+              accountName={user.username}
+              onClick={() => logout()}
+            />
+          }
+          onClickOutside={() => setPopoverOpen(false)}
         >
           <button
             className='header-profile'
