@@ -35,7 +35,7 @@ $overlay-background: rgba(91, 112, 131, 0.4);
   }
 
   .gray {
-    color: App.$footer-color;
+    color: App.$light-gray;
   }
 
   span {
@@ -79,7 +79,7 @@ $overlay-background: rgba(91, 112, 131, 0.4);
     position: absolute;
     left: 2.5%;
     top: 0;
-    color: App.$footer-color;
+    color: App.$light-gray;
     display: flex;
     align-items: center;
     cursor: text;

@@ -1,4 +1,4 @@
-$footer-color: rgb(113, 118, 123);
+$light-gray: rgb(113, 118, 123);
 $blue-primary: rgb(29, 155, 240);
 $dark-gray: rgb(51, 54, 57);
 $hover-color: rgba(231, 233, 234, 0.1);
@@ -14,7 +14,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: black;
   color: white;
-  scrollbar-color: $footer-color $dark-gray;
+  scrollbar-color: $light-gray $dark-gray;
   scrollbar-width: thin;
 }
 
@@ -54,7 +54,7 @@ body {
     li {
       padding: 5px 10px;
       a {
-        color: $footer-color;
+        color: $light-gray;
         text-decoration: none;
 
         &:hover {
@@ -125,7 +125,7 @@ button {
 }
 
 .signup-terms {
-  color: $footer-color;
+  color: $light-gray;
   font-size: 0.8rem;
 
   a {
@@ -387,7 +387,7 @@ header {
       transition: all 0.3s ease;
 
       p {
-        color: $footer-color;
+        color: $light-gray;
         font-weight: normal;
         height: 100%;
         padding: 20px 0;
@@ -454,7 +454,7 @@ header {
       p {
         font-weight: normal;
         font-size: 0.85rem;
-        color: $footer-color;
+        color: $light-gray;
       }
     }
   }
@@ -534,7 +534,7 @@ header {
 
         p {
           font-weight: normal;
-          color: $footer-color;
+          color: $light-gray;
         }
       }
 
@@ -545,7 +545,7 @@ header {
         margin-right: 2px;
 
         svg {
-          fill: $footer-color;
+          fill: $light-gray;
           width: 15px;
         }
 
@@ -575,7 +575,7 @@ header {
       background-color: transparent;
 
       svg {
-        fill: $footer-color;
+        fill: $light-gray;
         width: 20px;
       }
 
