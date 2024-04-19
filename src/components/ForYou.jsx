@@ -44,7 +44,7 @@ const ForYou = () => {
           {tweetsData.map((tweet) => (
             <Link
               to={`/${tweet.user.username}/status/${tweet._id}`}
-              className='tweet'
+              className='tweet link'
               key={tweet._id}
               state={{ tweetData: tweet }}
             >
