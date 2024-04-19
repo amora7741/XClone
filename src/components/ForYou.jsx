@@ -3,6 +3,7 @@ import LoadingSpinner from './LoadingSpinner';
 import axios from 'axios';
 import Tweet from './Tweet';
 import { Link } from 'react-router-dom';
+import he from 'he';
 
 const ForYou = () => {
   const [loading, setLoading] = useState(false);
@@ -14,8 +15,11 @@ const ForYou = () => {
     try {
       setLoading(true);
       const response = await axios.get(url, { withCredentials: true });
-
-      setTweetsData(response.data);
+      const decodedTweets = response.data.map((tweet) => ({
+        ...tweet,
+        text: he.decode(tweet.text),
+      }));
+      setTweetsData(decodedTweets);
     } catch (err) {
       alert(err);
     } finally {
