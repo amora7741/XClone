@@ -1,14 +1,22 @@
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import Tweet from './Tweet';
 
 const TweetDetail = () => {
-  const { username, tweetId } = useParams();
+  const { state } = useLocation();
+  const tweetData = state.tweetData;
+
+  useEffect(() => {
+    console.log(tweetData);
+  }, [tweetData]);
 
   return (
-    <div>
-      <h1>Tweet Details</h1>
-      <p>Username: {username}</p>
-      <p>Tweet ID: {tweetId}</p>
-    </div>
+    <main className='home-main'>
+      <h1>Post</h1>
+      <div className='tweet'>
+        <Tweet tweetData={tweetData} />
+      </div>
+    </main>
   );
 };
 
