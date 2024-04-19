@@ -3,6 +3,28 @@ $blue-primary: rgb(29, 155, 240);
 $dark-gray: rgb(51, 54, 57);
 $hover-color: rgba(231, 233, 234, 0.1);
 $tweet-hover-color: rgb(13, 13, 13);
+$repost-hover-color: rgb(0, 46, 0);
+$repost-color: rgb(0, 189, 0);
+$like-hover-color: rgb(38, 0, 0);
+$like-color: red;
+
+@mixin hoverStyles(
+  $bgColor: $hover-color,
+  $svgColor: $blue-primary,
+  $spanColor: $blue-primary
+) {
+  &:hover {
+    background-color: $bgColor;
+
+    & > svg {
+      fill: $svgColor;
+    }
+
+    & > span {
+      color: $spanColor;
+    }
+  }
+}
 
 * {
   margin: 0;
@@ -593,17 +615,15 @@ header {
         color: $light-gray;
       }
 
-      &:hover {
-        background-color: $hover-color;
+      @include hoverStyles();
+    }
 
-        & > svg {
-          fill: $blue-primary;
-        }
+    #likebutton {
+      @include hoverStyles($like-hover-color, $like-color, $like-color);
+    }
 
-        & > span {
-          color: $blue-primary;
-        }
-      }
+    #repostbutton {
+      @include hoverStyles($repost-hover-color, $repost-color, $repost-color);
     }
 
     .bookmark-share {
