@@ -286,8 +286,7 @@ select {
 
 .pagecontainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  //grid-template-columns: 1fr minmax(550px, 1fr) 1fr;
+  grid-template-columns: 1fr minmax(550px, 1fr) 1fr;
   gap: 10px;
   min-height: 100vh;
 }
@@ -572,15 +571,24 @@ header {
     justify-content: space-between;
     margin-top: 0.5rem;
     margin-left: -10px;
+    z-index: 9999;
 
     button {
       width: fit-content;
-      padding: 10px;
+      padding: 8px;
       background-color: transparent;
+      position: relative;
 
       svg {
         fill: $light-gray;
         width: 20px;
+      }
+
+      span {
+        position: absolute;
+        right: 0;
+        transform: translateX(70%);
+        color: $light-gray;
       }
 
       &:hover {
@@ -588,6 +596,10 @@ header {
 
         & > svg {
           fill: $blue-primary;
+        }
+
+        & > span {
+          color: $blue-primary;
         }
       }
     }

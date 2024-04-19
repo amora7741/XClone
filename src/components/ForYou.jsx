@@ -47,7 +47,7 @@ const ForYou = () => {
               className='tweet'
               key={tweet._id}
             >
-              <Tweet user={tweet.user} content={tweet.text} />
+              <Tweet tweetData={tweet} />
             </Link>
           ))}
         </div>
