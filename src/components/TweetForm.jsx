@@ -2,9 +2,11 @@ import { useState } from 'react';
 import Button from './Button';
 import axios from 'axios';
 import TweetTools from './TweetTools';
+import toast, { Toaster } from 'react-hot-toast';
 
-const TweetForm = ({ showHr }) => {
+const TweetForm = ({ showHr, onClose }) => {
   const [tweet, setTweet] = useState('');
+
   const sendTweet = async () => {
     const url = `${import.meta.env.VITE_BASE_API}/api/posts/`;
 
@@ -16,6 +18,27 @@ const TweetForm = ({ showHr }) => {
           withCredentials: true,
         }
       );
+
+      if (response.status === 201) {
+        if (onClose) {
+          onClose();
+        }
+
+        setTweet('');
+        toast('Tweet created successfully', {
+          style: {
+            background: 'rgb(29, 155, 240)',
+            color: 'white',
+            textAlign: 'center',
+          },
+          duration: 2000,
+          position: 'bottom-center',
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
 
       console.log(response);
     } catch (err) {
@@ -50,6 +73,7 @@ const TweetForm = ({ showHr }) => {
           </Button>
         </div>
       </div>
+      <Toaster />
     </>
   );
 };

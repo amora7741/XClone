@@ -10,7 +10,7 @@ const TweetModal = ({ open, onClose }) => {
       <button id='closebutton' onClick={onClose}>
         <CloseButton />
       </button>
-      <TweetForm showHr />
+      <TweetForm showHr onClose={onClose} />
     </Popup>
   );
 };
