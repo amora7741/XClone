@@ -531,6 +531,11 @@ header {
         display: flex;
         align-items: center;
         gap: 3px;
+
+        p {
+          font-weight: normal;
+          color: $footer-color;
+        }
       }
 
       button {

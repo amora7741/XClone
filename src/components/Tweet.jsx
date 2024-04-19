@@ -5,7 +5,7 @@ const Tweet = ({ timestamp, content, user }) => {
       <div className='tweet-content'>
         <div className='tweet-content-top'>
           <div className='tweet-content-top-user'>
-            <h5>{user.name}</h5>
+            <h4>{user.name}</h4>
             <p>@{user.username}</p>
           </div>
           <button>
