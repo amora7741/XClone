@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import Index from '../pages/Index';
 import Home from '../pages/Home';
 import Layout from '../components/Layout';
+import TweetDetail from './TweetDetail';
 import { AuthContext } from '../context/AuthContext';
 
 const Router = () => {
@@ -20,7 +21,10 @@ const Router = () => {
     },
     {
       element: <Layout />,
-      children: [{ path: 'home', element: <Home /> }],
+      children: [
+        { path: 'home', element: <Home /> },
+        { path: ':username/status/:tweetId', element: <TweetDetail /> },
+      ],
     },
   ]);
 
