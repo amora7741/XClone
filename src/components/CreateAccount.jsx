@@ -73,7 +73,7 @@ const CreateAccount = () => {
         }
       }
     } catch (err) {
-      console.error(err);
+      alert(err);
     }
   };
   return (

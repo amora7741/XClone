@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
       setUser(response.data.user);
     } catch (err) {
-      console.error(err);
+      alert(err);
       setUser(null);
     }
   };
@@ -26,9 +26,7 @@ export const AuthProvider = ({ children }) => {
     const url = `${import.meta.env.VITE_BASE_API}/api/auth/logout`;
 
     try {
-      const response = await axios.get(url, { withCredentials: true });
-
-      console.log(response);
+      await axios.get(url, { withCredentials: true });
     } catch (err) {
       alert(err);
     } finally {
@@ -49,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
       setUser(response.data.user);
     } catch (err) {
-      console.error(err);
+      alert(err);
       setUser(null);
     } finally {
       setAuthCheckLoading(false);

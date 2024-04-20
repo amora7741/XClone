@@ -39,10 +39,8 @@ const TweetForm = ({ showHr, onClose }) => {
           window.location.reload();
         }, 2000);
       }
-
-      console.log(response);
     } catch (err) {
-      console.error(err);
+      alert(err);
     }
   };
 

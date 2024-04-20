@@ -31,10 +31,6 @@ const ForYou = () => {
     getTweets();
   }, []);
 
-  useEffect(() => {
-    console.log(tweetsData);
-  }, [tweetsData]);
-
   return (
     <>
       {loading ? (
