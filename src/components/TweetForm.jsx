@@ -29,7 +29,7 @@ const TweetForm = ({ showHr, onClose }) => {
         setTweet('');
         setTweetsData([response.data, ...tweetsData]);
 
-        toast('Tweet created successfully', {
+        toast('Your post was sent.', {
           style: {
             background: 'rgb(29, 155, 240)',
             color: 'white',
