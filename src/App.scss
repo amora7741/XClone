@@ -394,13 +394,16 @@ header {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 1px solid $dark-gray;
+  border-left: 1px solid $dark-gray;
+  border-right: 1px solid $dark-gray;
 
   .home-buttoncontainer {
     display: flex;
     position: sticky;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
     top: 0;
     border-bottom: 1px solid $dark-gray;
 
@@ -530,7 +533,7 @@ header {
   text-decoration: none;
   color: inherit;
   width: 100%;
-  border-bottom: 2px solid $dark-gray;
+  border-top: 2px solid $dark-gray;
   transition: background-color 0.3s ease-in-out;
 
   &.link {

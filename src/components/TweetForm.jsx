@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TweetContext } from '../context/TweetContext';
 import Button from './Button';
 import axios from 'axios';
 import TweetTools from './TweetTools';
@@ -6,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const TweetForm = ({ showHr, onClose }) => {
   const [tweet, setTweet] = useState('');
+  const { tweetsData, setTweetsData } = useContext(TweetContext);
 
   const sendTweet = async () => {
     const url = `${import.meta.env.VITE_BASE_API}/api/posts/`;
@@ -25,6 +27,8 @@ const TweetForm = ({ showHr, onClose }) => {
         }
 
         setTweet('');
+        setTweetsData([response.data, ...tweetsData]);
+
         toast('Tweet created successfully', {
           style: {
             background: 'rgb(29, 155, 240)',
@@ -34,10 +38,6 @@ const TweetForm = ({ showHr, onClose }) => {
           duration: 2000,
           position: 'bottom-center',
         });
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 2000);
       }
     } catch (err) {
       alert(err);
