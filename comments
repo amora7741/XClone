@@ -1,0 +1,2 @@
+for foryou and following pages, maybe only return like/retweet/comment count instead of the array with ids
+for the tweet detail page, do return all the comment ids in the post so we can show them

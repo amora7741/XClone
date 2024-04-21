@@ -9,19 +9,16 @@ import TweetForm from '../components/TweetForm';
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const { getTweets } = useContext(TweetContext);
-  const [activeButton, setActiveButton] = useState('ForYou');
-  const forYouRef = useRef(null);
-
-  useEffect(() => {
-    if (forYouRef.current) {
-      forYouRef.current.click();
-    }
-  }, []);
+  const { getTweets, tweetsData } = useContext(TweetContext);
+  const [activeButton, setActiveButton] = useState(1);
 
   useEffect(() => {
     getTweets();
   }, []);
+
+  useEffect(() => {
+    console.log(tweetsData);
+  }, [tweetsData]);
 
   const handleModalClose = () => {
     navigate('/');
@@ -43,15 +40,14 @@ const Home = () => {
         <main className='home-main'>
           <div className='home-buttoncontainer'>
             <button
-              ref={forYouRef}
-              onClick={() => handleButtonClick('ForYou')}
-              className={activeButton === 'ForYou' ? 'active' : ''}
+              onClick={() => handleButtonClick(1)}
+              className={activeButton === 1 ? 'active' : ''}
             >
               <p>For you</p>
             </button>
             <button
-              onClick={() => handleButtonClick('Following')}
-              className={activeButton === 'Following' ? 'active' : ''}
+              onClick={() => handleButtonClick(2)}
+              className={activeButton === 2 ? 'active' : ''}
             >
               <p>Following</p>
             </button>
@@ -60,8 +56,7 @@ const Home = () => {
             <TweetForm />
           </div>
           <hr />
-          {activeButton === 'ForYou' && <ForYou />}
-          {activeButton === 'Following' && <div>Following</div>}
+          {activeButton === 1 ? <ForYou /> : <h1>Hello</h1>}
         </main>
       )}
     </>

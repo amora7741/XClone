@@ -622,6 +622,15 @@ header {
 
     #likebutton {
       @include hoverStyles($like-hover-color, $like-color, $like-color);
+
+      &.liked {
+        svg {
+          fill: $like-color;
+        }
+        span {
+          color: $like-color;
+        }
+      }
     }
 
     #repostbutton {
