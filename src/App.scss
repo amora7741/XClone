@@ -720,3 +720,12 @@ hr {
 .home-formcontainer {
   padding: 0 15px 10px;
 }
+
+.tweetdetail-main {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-left: 1px solid $dark-gray;
+  border-right: 1px solid $dark-gray;
+}

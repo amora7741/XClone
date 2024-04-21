@@ -26,9 +26,26 @@ export const TweetProvider = ({ children }) => {
     }
   };
 
+  const getTweet = async (username, postId) => {
+    const url = `${
+      import.meta.env.VITE_BASE_API
+    }/api/posts/${username}/status/${postId}`;
+
+    try {
+      setLoading(true);
+      const response = await axios.get(url, { withCredentials: true });
+
+      return response.data;
+    } catch (err) {
+      alert(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <TweetContext.Provider
-      value={{ loading, getTweets, tweetsData, setTweetsData }}
+      value={{ loading, getTweets, tweetsData, setTweetsData, getTweet }}
     >
       {children}
     </TweetContext.Provider>
