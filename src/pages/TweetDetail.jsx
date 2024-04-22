@@ -46,9 +46,12 @@ const TweetDetail = () => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div className='tweet'>
-          {tweetData && <Tweet tweetData={tweetData} showHr />}
-        </div>
+        <>
+          <div className='tweet'>
+            {tweetData && <Tweet tweetData={tweetData} showHr />}
+          </div>
+          <div className='tweet-comments'></div>
+        </>
       )}
     </main>
   );

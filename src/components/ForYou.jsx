@@ -18,7 +18,6 @@ const ForYou = () => {
               to={`/${tweet.user.username}/status/${tweet._id}`}
               className='tweet link'
               key={tweet._id}
-              state={{ tweetData: tweet }}
             >
               <Tweet tweetData={tweet} />
             </Link>
