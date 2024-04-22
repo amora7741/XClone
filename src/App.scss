@@ -730,6 +730,9 @@ hr {
   border-right: 1px solid $dark-gray;
 
   &-top {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 1rem;
