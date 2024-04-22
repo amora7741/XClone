@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const Tweet = ({ tweetData }) => {
+const Tweet = ({ tweetData, showHr }) => {
   const [likeCount, setLikeCount] = useState(
     'likesCount' in tweetData ? tweetData.likesCount : tweetData.likes.length
   );
@@ -58,6 +58,7 @@ const Tweet = ({ tweetData }) => {
         <div className='tweet-content-text'>
           <p>{tweetData.text}</p>
         </div>
+        {showHr && <hr style={{ marginTop: 1 + 'rem' }} />}
         <div className='tweet-buttons'>
           <button id='commentbutton'>
             <svg viewBox='0 0 24 24' aria-hidden='true'>

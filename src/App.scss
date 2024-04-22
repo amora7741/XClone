@@ -728,4 +728,29 @@ hr {
   width: 100%;
   border-left: 1px solid $dark-gray;
   border-right: 1px solid $dark-gray;
+
+  &-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 5px;
+
+    button {
+      background-color: transparent;
+      padding: 10px;
+      width: fit-content;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+
+      svg {
+        fill: white;
+        width: 22px;
+      }
+    }
+  }
 }
