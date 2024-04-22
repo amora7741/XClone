@@ -645,7 +645,8 @@ header {
 
 .tweet-container {
   display: flex;
-  align-items: center;
+  align-items: start;
+  margin-top: 20px;
   justify-content: flex-start;
   gap: 0.7rem;
 
@@ -655,7 +656,7 @@ header {
   }
 
   textarea {
-    margin-top: 25px;
+    margin-top: 7px;
     width: 100%;
     font-family: inherit;
     background-color: transparent;

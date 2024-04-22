@@ -15,8 +15,8 @@ $blue-primary: rgb(29, 155, 240);
 
   #closebutton {
     border-radius: 9999px;
-    top: 5%;
-    left: 1.5%;
+    top: 5px;
+    left: 7px;
     padding: 7px;
 
     &:hover {
@@ -25,6 +25,6 @@ $blue-primary: rgb(29, 155, 240);
   }
 
   .tweet-container {
-    margin-top: 2.5rem;
+    margin-top: 3.5rem;
   }
 }

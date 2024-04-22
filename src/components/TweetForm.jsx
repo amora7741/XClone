@@ -4,6 +4,7 @@ import Button from './Button';
 import axios from 'axios';
 import TweetTools from './TweetTools';
 import toast, { Toaster } from 'react-hot-toast';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const TweetForm = ({ showHr, onClose }) => {
   const [tweet, setTweet] = useState('');
@@ -49,11 +50,13 @@ const TweetForm = ({ showHr, onClose }) => {
       <div className='tweet-container'>
         <div className='profile-picture'></div>
         <form>
-          <textarea
+          <TextareaAutosize
             placeholder='What is happening?!'
             name='tweet-text'
             id='tweet-text'
             value={tweet}
+            minRows={2}
+            maxRows={10}
             onChange={(e) => setTweet(e.target.value)}
           />
         </form>
