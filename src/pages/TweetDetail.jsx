@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { TweetContext } from '../context/TweetContext';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Tweet from '../components/Tweet';
 
@@ -9,6 +9,7 @@ const TweetDetail = () => {
   const { getTweet } = useContext(TweetContext);
   const [tweetData, setTweetData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTweet = async () => {
@@ -26,10 +27,14 @@ const TweetDetail = () => {
     fetchTweet();
   }, []);
 
+  const handleClick = () => {
+    navigate(-1);
+  };
+
   return (
     <main className='tweetdetail-main'>
       <div className='tweetdetail-main-top'>
-        <button>
+        <button onClick={handleClick}>
           <svg viewBox='0 0 24 24' aria-hidden='true'>
             <g>
               <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
