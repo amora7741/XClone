@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { TweetContext } from '../context/TweetContext';
 import { useParams } from 'react-router-dom';
-import LoadingSpinner from './LoadingSpinner';
-import Tweet from './Tweet';
+import LoadingSpinner from '../components/LoadingSpinner';
+import Tweet from '../components/Tweet';
 
 const TweetDetail = () => {
   const { username, tweetId } = useParams();
