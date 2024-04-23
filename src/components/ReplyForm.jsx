@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import TweetTools from './TweetTools';
+import Button from './Button';
 
 const ReplyForm = ({ parentPost, originalPoster }) => {
   const [reply, setReply] = useState('');
@@ -8,7 +10,9 @@ const ReplyForm = ({ parentPost, originalPoster }) => {
     <div className='reply-container'>
       <div className='profile-picture'></div>
       <div className='reply-container-right'>
-        <p>Replying to @{originalPoster}</p>
+        <p>
+          Replying to <span>@{originalPoster}</span>
+        </p>
         <form>
           <TextareaAutosize
             placeholder='What is happening?!'
@@ -20,6 +24,16 @@ const ReplyForm = ({ parentPost, originalPoster }) => {
             onChange={(e) => setReply(e.target.value)}
           />
         </form>
+        <div className='tweet-tools'>
+          <TweetTools />
+          <Button
+            backgroundColor='rgb(29, 155, 240)'
+            textColor='white'
+            onClick={() => {}}
+          >
+            Reply
+          </Button>
+        </div>
       </div>
     </div>
   );
