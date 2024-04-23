@@ -36,7 +36,10 @@ const TweetDetail = () => {
 
   useEffect(() => {
     const fetchComments = async () => {
-      if (commentIds.length === 0) return;
+      if (commentIds.length === 0) {
+        setComments(null);
+        return;
+      }
 
       try {
         setCommentsLoading(true);
@@ -51,7 +54,7 @@ const TweetDetail = () => {
     };
 
     fetchComments();
-  }, [commentIds, tweetId, username, getComments]);
+  }, [commentIds]);
 
   const handleClick = () => {
     navigate(-1);
