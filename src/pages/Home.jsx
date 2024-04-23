@@ -16,10 +16,6 @@ const Home = () => {
     getTweets();
   }, []);
 
-  useEffect(() => {
-    console.log(tweetsData);
-  }, [tweetsData]);
-
   const handleModalClose = () => {
     navigate('/');
   };

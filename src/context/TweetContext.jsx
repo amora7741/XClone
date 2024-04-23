@@ -32,20 +32,42 @@ export const TweetProvider = ({ children }) => {
     }/api/posts/${username}/status/${postId}`;
 
     try {
-      setLoading(true);
       const response = await axios.get(url, { withCredentials: true });
 
-      return response.data;
+      return response;
     } catch (err) {
       alert(err);
-    } finally {
-      setLoading(false);
+    }
+  };
+
+  const getComments = async (username, postId, commentIds) => {
+    const url = `${
+      import.meta.env.VITE_BASE_API
+    }/api/posts/${username}/status/${postId}/comments`;
+
+    try {
+      const response = await axios.post(
+        url,
+        { commentIds },
+        { withCredentials: true }
+      );
+
+      return response;
+    } catch (err) {
+      alert(err);
     }
   };
 
   return (
     <TweetContext.Provider
-      value={{ loading, getTweets, tweetsData, setTweetsData, getTweet }}
+      value={{
+        loading,
+        getTweets,
+        tweetsData,
+        setTweetsData,
+        getTweet,
+        getComments,
+      }}
     >
       {children}
     </TweetContext.Provider>

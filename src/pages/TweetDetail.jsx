@@ -3,29 +3,55 @@ import { TweetContext } from '../context/TweetContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Tweet from '../components/Tweet';
+import { Link } from 'react-router-dom';
 
 const TweetDetail = () => {
   const { username, tweetId } = useParams();
-  const { getTweet } = useContext(TweetContext);
+  const { getTweet, getComments } = useContext(TweetContext);
   const [tweetData, setTweetData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [commentIds, setCommentIds] = useState([]);
+  const [comments, setComments] = useState(null);
+  const [tweetLoading, setTweetLoading] = useState(false);
+  const [commentsLoading, setCommentsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTweet = async () => {
       try {
-        setLoading(true);
+        setTweetLoading(true);
+
         const response = await getTweet(username, tweetId);
-        setTweetData(response);
+
+        setTweetData(response.data);
+        setCommentIds(response.data.comments);
       } catch (err) {
         alert('Error fetching tweet:', err);
       } finally {
-        setLoading(false);
+        setTweetLoading(false);
       }
     };
 
     fetchTweet();
-  }, []);
+  }, [username, tweetId, getTweet]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      if (commentIds.length === 0) return;
+
+      try {
+        setCommentsLoading(true);
+        const response = await getComments(username, tweetId, commentIds);
+
+        setComments(response.data);
+      } catch (err) {
+        alert(err);
+      } finally {
+        setCommentsLoading(false);
+      }
+    };
+
+    fetchComments();
+  }, [commentIds, tweetId, username, getComments]);
 
   const handleClick = () => {
     navigate(-1);
@@ -43,15 +69,28 @@ const TweetDetail = () => {
         </button>
         <h2>Post</h2>
       </div>
-      {loading ? (
+      {tweetLoading ? (
         <LoadingSpinner />
       ) : (
-        <>
-          <div className='tweet'>
-            {tweetData && <Tweet tweetData={tweetData} showHr />}
-          </div>
-          <div className='tweet-comments'></div>
-        </>
+        <div className='tweet'>
+          {tweetData && <Tweet tweetData={tweetData} showHr />}
+        </div>
+      )}
+      {commentsLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className='tweet-comments'>
+          {comments &&
+            comments.map((tweet) => (
+              <Link
+                to={`/${tweet.user.username}/status/${tweet._id}`}
+                className='tweet link'
+                key={tweet._id}
+              >
+                <Tweet tweetData={tweet} />
+              </Link>
+            ))}
+        </div>
       )}
     </main>
   );
