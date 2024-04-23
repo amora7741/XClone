@@ -654,19 +654,19 @@ header {
     display: flex;
     flex: 1;
   }
+}
 
-  textarea {
-    margin-top: 7px;
-    width: 100%;
-    font-family: inherit;
-    background-color: transparent;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font-size: 1.3rem;
-    resize: none;
-    outline: transparent;
-  }
+textarea {
+  margin-top: 7px;
+  width: 100%;
+  font-family: inherit;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font-size: 1.3rem;
+  resize: none;
+  outline: transparent;
 }
 
 .profile-picture {

@@ -9,12 +9,14 @@ import TweetForm from '../components/TweetForm';
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const { getTweets, tweetsData } = useContext(TweetContext);
+  const { getTweets } = useContext(TweetContext);
   const [activeButton, setActiveButton] = useState(1);
 
   useEffect(() => {
-    getTweets();
-  }, []);
+    if (user) {
+      getTweets();
+    }
+  }, [user]);
 
   const handleModalClose = () => {
     navigate('/');
