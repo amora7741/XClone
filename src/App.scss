@@ -526,6 +526,17 @@ header {
   flex-direction: column;
 }
 
+.link {
+  &:hover {
+    background-color: $tweet-hover-color;
+  }
+
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
 .tweet {
   display: flex;
   gap: 10px;
@@ -535,17 +546,6 @@ header {
   width: 100%;
   border-bottom: 2px solid $dark-gray;
   transition: background-color 0.3s ease-in-out;
-
-  &.link {
-    &:hover {
-      background-color: $tweet-hover-color;
-    }
-
-    &:visited {
-      color: inherit;
-      text-decoration: none;
-    }
-  }
 
   .tweet-content {
     display: flex;
@@ -798,7 +798,7 @@ hr {
 aside {
   justify-self: start;
   margin-left: 1rem;
-  width: 20rem;
+  width: 22rem;
   padding: 5px 0;
   display: flex;
   flex-direction: column;
@@ -838,10 +838,10 @@ aside {
   }
 
   .asidecontainer {
-    padding: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    min-height: 9rem;
+    justify-content: space-between;
     border: 1px solid $dark-gray;
     border-radius: 16px;
 
@@ -850,11 +850,82 @@ aside {
     }
 
     &.subscribe {
+      padding: 15px;
       line-height: 1;
 
       button {
         width: fit-content;
         padding: 10px 15px;
+      }
+    }
+
+    &.trending {
+      gap: 5px;
+      h1 {
+        padding: 15px 15px 0;
+      }
+
+      #showmore {
+        justify-content: start;
+        font-weight: normal;
+        padding: 15px;
+        color: $blue-primary;
+        background-color: transparent;
+        width: 100%;
+
+        &:hover {
+          background-color: $tweet-hover-color;
+        }
+      }
+    }
+  }
+}
+
+.trendingposts-container {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.trending-post {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px 15px;
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $light-gray;
+  }
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -7px;
+
+    button {
+      width: fit-content;
+      padding: 10px;
+      background-color: transparent;
+
+      svg {
+        width: 15px;
+        fill: white;
+      }
+
+      &:hover {
+        background-color: #1d1d1d;
+
+        svg {
+          fill: $blue-primary;
+        }
       }
     }
   }
