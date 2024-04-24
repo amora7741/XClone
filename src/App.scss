@@ -798,10 +798,11 @@ hr {
 aside {
   justify-self: start;
   margin-left: 1rem;
+  width: 20rem;
   padding: 5px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 
   .searchbar {
     display: flex;
@@ -832,6 +833,28 @@ aside {
 
       svg {
         fill: $blue-primary;
+      }
+    }
+  }
+
+  .asidecontainer {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid $dark-gray;
+    border-radius: 16px;
+
+    h1 {
+      font-size: 1.3rem;
+    }
+
+    &.subscribe {
+      line-height: 1;
+
+      button {
+        width: fit-content;
+        padding: 10px 15px;
       }
     }
   }

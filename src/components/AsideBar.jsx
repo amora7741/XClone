@@ -1,3 +1,6 @@
+import WhatsHappening from './WhatsHappening';
+import Subscribe from './Subscribe';
+
 const AsideBar = () => {
   return (
     <aside>
@@ -9,6 +12,8 @@ const AsideBar = () => {
         </svg>
         <input type='text' placeholder='Search' />
       </div>
+      <Subscribe />
+      <WhatsHappening />
     </aside>
   );
 };
