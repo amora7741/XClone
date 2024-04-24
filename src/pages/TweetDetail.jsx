@@ -30,6 +30,7 @@ const TweetDetail = () => {
     const fetchTweet = async () => {
       try {
         setTweetLoading(true);
+        setComments([]);
 
         const response = await getTweet(username, tweetId);
 
