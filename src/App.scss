@@ -794,3 +794,45 @@ hr {
     }
   }
 }
+
+aside {
+  justify-self: start;
+  margin-left: 1rem;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .searchbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 15px;
+    border: 1px solid #1d1d1d;
+    border-radius: 9999px;
+    background-color: #1d1d1d;
+
+    svg {
+      fill: $light-gray;
+      width: 20px;
+    }
+
+    input {
+      background-color: transparent;
+      width: 100%;
+      border: none;
+      outline: none;
+      color: inherit;
+      font-size: 1rem;
+    }
+
+    &:focus-within {
+      border: 1px solid $blue-primary;
+      background-color: transparent;
+
+      svg {
+        fill: $blue-primary;
+      }
+    }
+  }
+}
