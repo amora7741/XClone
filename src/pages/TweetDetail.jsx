@@ -12,7 +12,7 @@ const TweetDetail = () => {
   const { getTweet, getComments } = useContext(TweetContext);
   const [tweetData, setTweetData] = useState(null);
   const [commentIds, setCommentIds] = useState([]);
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
   const [tweetLoading, setTweetLoading] = useState(false);
   const [commentsLoading, setCommentsLoading] = useState(false);
   const { user } = useContext(AuthContext);
@@ -50,7 +50,7 @@ const TweetDetail = () => {
   useEffect(() => {
     const fetchComments = async () => {
       if (commentIds.length === 0) {
-        setComments(null);
+        setComments([]);
         return;
       }
 
@@ -100,9 +100,9 @@ const TweetDetail = () => {
                 <ReplyForm
                   parentPost={tweetData._id}
                   originalPosterName={tweetData.user.username}
-                  onSubmit={(response) =>
-                    setComments(response.data, ...comments)
-                  }
+                  submitReply={(response) => {
+                    setComments([response.data, ...comments]);
+                  }}
                 />
               )}
             </>

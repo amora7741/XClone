@@ -5,7 +5,12 @@ import Button from './Button';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 
-const ReplyForm = ({ parentPost, originalPosterName, onClose }) => {
+const ReplyForm = ({
+  parentPost,
+  originalPosterName,
+  onClose,
+  submitReply,
+}) => {
   const [reply, setReply] = useState('');
 
   const postReply = async () => {
@@ -36,7 +41,7 @@ const ReplyForm = ({ parentPost, originalPosterName, onClose }) => {
           position: 'bottom-center',
         });
 
-        return response;
+        submitReply(response);
       } else {
         throw new Error('Your post was not sent.');
       }
