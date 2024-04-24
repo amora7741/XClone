@@ -6,9 +6,11 @@ import { AuthProvider } from './context/AuthContext';
 import { TweetProvider } from './context/TweetContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthProvider>
-    <TweetProvider>
-      <Router />
-    </TweetProvider>
-  </AuthProvider>
+  <React.StrictMode>
+    <AuthProvider>
+      <TweetProvider>
+        <Router />
+      </TweetProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );

@@ -1,0 +1,17 @@
+.reply-modal-content {
+  margin: 3rem auto !important;
+  min-height: unset;
+  height: fit-content;
+
+  .reply-container {
+    padding: 5px 15px;
+    margin-top: 3rem;
+    width: 100%;
+    border-bottom: none;
+    flex: 1;
+
+    .tweet-tools {
+      margin-top: 2rem;
+    }
+  }
+}

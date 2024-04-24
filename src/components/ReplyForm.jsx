@@ -41,7 +41,9 @@ const ReplyForm = ({
           position: 'bottom-center',
         });
 
-        submitReply(response);
+        if (submitReply) {
+          submitReply(response);
+        }
       } else {
         throw new Error('Your post was not sent.');
       }
