@@ -2,40 +2,82 @@ import { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import TweetTools from './TweetTools';
 import Button from './Button';
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
-const ReplyForm = ({ parentPost, originalPoster }) => {
+const ReplyForm = ({ parentPost, originalPosterName, onClose }) => {
   const [reply, setReply] = useState('');
 
+  const postReply = async () => {
+    const url = `${
+      import.meta.env.VITE_BASE_API
+    }/api/posts/${originalPosterName}/status/${parentPost}/comments/create`;
+
+    try {
+      const response = await axios.post(
+        url,
+        { comment_text: reply },
+        { withCredentials: true }
+      );
+
+      if (response.status === 201) {
+        setReply('');
+        if (onClose) {
+          onClose();
+        }
+
+        toast('Your post was sent.', {
+          style: {
+            background: 'rgb(29, 155, 240)',
+            color: 'white',
+            textAlign: 'center',
+          },
+          duration: 2000,
+          position: 'bottom-center',
+        });
+
+        return response;
+      } else {
+        throw new Error('Your post was not sent.');
+      }
+    } catch (err) {
+      alert(err);
+    }
+  };
+
   return (
-    <div className='reply-container'>
-      <div className='profile-picture'></div>
-      <div className='reply-container-right'>
-        <p>
-          Replying to <span>@{originalPoster}</span>
-        </p>
-        <form>
-          <TextareaAutosize
-            placeholder='What is happening?!'
-            name='tweet-text'
-            id='tweet-text'
-            value={reply}
-            minRows={2}
-            maxRows={5}
-            onChange={(e) => setReply(e.target.value)}
-          />
-        </form>
-        <div className='tweet-tools'>
-          <TweetTools />
-          <Button
-            backgroundColor='rgb(29, 155, 240)'
-            textColor='white'
-            onClick={() => {}}
-          >
-            Reply
-          </Button>
+    <>
+      <div className='reply-container'>
+        <div className='profile-picture'></div>
+        <div className='reply-container-right'>
+          <p>
+            Replying to <span>@{originalPosterName}</span>
+          </p>
+          <form>
+            <TextareaAutosize
+              placeholder='Post your reply'
+              name='reply-text'
+              id='reply-text'
+              value={reply}
+              minRows={2}
+              maxRows={5}
+              onChange={(e) => setReply(e.target.value)}
+            />
+          </form>
+          <div className='tweet-tools'>
+            <TweetTools />
+            <Button
+              backgroundColor='rgb(29, 155, 240)'
+              textColor='white'
+              onClick={() => postReply()}
+            >
+              Reply
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+      <Toaster />
+    </>
   );
 };
 

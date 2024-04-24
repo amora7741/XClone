@@ -99,7 +99,10 @@ const TweetDetail = () => {
               {tweetData && (
                 <ReplyForm
                   parentPost={tweetData._id}
-                  originalPoster={tweetData.user.username}
+                  originalPosterName={tweetData.user.username}
+                  onSubmit={(response) =>
+                    setComments(response.data, ...comments)
+                  }
                 />
               )}
             </>
