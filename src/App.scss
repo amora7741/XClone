@@ -757,6 +757,12 @@ hr {
       }
     }
   }
+
+  .tweet.original {
+    .tweet-content-text {
+      font-size: 1.15rem;
+    }
+  }
 }
 
 .reply-container {

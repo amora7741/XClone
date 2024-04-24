@@ -93,7 +93,7 @@ const TweetDetail = () => {
             <LoadingSpinner />
           ) : (
             <>
-              <div className='tweet'>
+              <div className='tweet original'>
                 {tweetData && <Tweet tweetData={tweetData} showHr />}
               </div>
               {tweetData && (
