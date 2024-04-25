@@ -14,7 +14,7 @@ const WhatsHappening = () => {
       <h1>What's happening</h1>
       <div className='trendingposts-container'>
         {trendingPosts.map((post, index) => (
-          <Link to='' key={index} className='link'>
+          <Link to='#' key={index} className='link'>
             <TrendingPost post={post} />
           </Link>
         ))}

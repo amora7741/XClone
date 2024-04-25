@@ -960,11 +960,6 @@ aside {
     padding: 15px 15px 0;
   }
 
-  .account-list {
-    display: flex;
-    flex-direction: column;
-  }
-
   &-account {
     display: flex;
     flex-direction: column;
@@ -1008,6 +1003,11 @@ aside {
       }
     }
   }
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .connect-main {
