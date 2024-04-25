@@ -480,13 +480,6 @@ header {
     display: flex;
     gap: 10px;
 
-    .picture {
-      width: 40px;
-      height: 40px;
-      border-radius: 100%;
-      border: 1px solid $dark-gray;
-    }
-
     .profile-info {
       display: flex;
       flex-direction: column;
@@ -815,6 +808,7 @@ hr {
 aside {
   justify-self: start;
   margin-left: 1rem;
+  position: relative;
   width: 22rem;
   padding: 5px 0;
   display: flex;
@@ -824,6 +818,9 @@ aside {
   .searchbar {
     display: flex;
     align-items: center;
+    position: sticky;
+    z-index: 10;
+    top: 0;
     gap: 1rem;
     padding: 10px 15px;
     border: 1px solid #1d1d1d;
@@ -846,7 +843,7 @@ aside {
 
     &:focus-within {
       border: 1px solid $blue-primary;
-      background-color: transparent;
+      background-color: black;
 
       svg {
         fill: $blue-primary;
@@ -877,6 +874,8 @@ aside {
     }
 
     &.trending {
+      position: sticky;
+      top: -5rem;
       gap: 5px;
       h1 {
         padding: 15px 15px 0;
@@ -950,6 +949,9 @@ aside {
 }
 
 .followbox {
+  position: sticky;
+  top: 28.5rem;
+
   h1 {
     padding: 15px 15px 0;
   }
@@ -963,7 +965,7 @@ aside {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 15px 15px 10px;
 
     &-left {
       display: flex;

@@ -46,7 +46,7 @@ const Header = () => {
             onClick={() => setPopoverOpen(!popoverOpen)}
           >
             <div className='header-profile-left'>
-              <div className='picture'></div>
+              <div className='profile-picture'></div>
               <div className='profile-info'>
                 <h5>{user.name}</h5>
                 <p>@{user.username}</p>
