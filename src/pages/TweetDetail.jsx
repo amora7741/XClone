@@ -1,6 +1,11 @@
 import { useEffect, useState, useContext } from 'react';
 import { TweetContext } from '../context/TweetContext';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import {
+  useParams,
+  useNavigate,
+  Link,
+  ScrollRestoration,
+} from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Tweet from '../components/Tweet';
 import ReplyForm from '../components/ReplyForm';
@@ -79,52 +84,55 @@ const TweetDetail = () => {
           onClose={() => handleModalClose()}
         />
       ) : (
-        <main className='tweetdetail-main'>
-          <div className='tweetdetail-main-top'>
-            <button onClick={handleClick}>
-              <svg viewBox='0 0 24 24' aria-hidden='true'>
-                <g>
-                  <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
-                </g>
-              </svg>
-            </button>
-            <h2>Post</h2>
-          </div>
-          {tweetLoading ? (
-            <LoadingSpinner />
-          ) : (
-            <>
-              <div className='tweet original'>
-                {tweetData && <Tweet tweetData={tweetData} showHr />}
-              </div>
-              {tweetData && (
-                <ReplyForm
-                  parentPost={tweetData._id}
-                  originalPosterName={tweetData.user.username}
-                  submitReply={(response) => {
-                    setComments([response.data, ...comments]);
-                  }}
-                />
-              )}
-            </>
-          )}
-          {commentsLoading ? (
-            <LoadingSpinner />
-          ) : (
-            <div className='tweet-comments'>
-              {comments &&
-                comments.map((tweet) => (
-                  <Link
-                    to={`/${tweet.user.username}/status/${tweet._id}`}
-                    className='tweet link'
-                    key={tweet._id}
-                  >
-                    <Tweet tweetData={tweet} />
-                  </Link>
-                ))}
+        <>
+          <ScrollRestoration />
+          <main className='tweetdetail-main'>
+            <div className='tweetdetail-main-top'>
+              <button onClick={handleClick}>
+                <svg viewBox='0 0 24 24' aria-hidden='true'>
+                  <g>
+                    <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
+                  </g>
+                </svg>
+              </button>
+              <h1>Post</h1>
             </div>
-          )}
-        </main>
+            {tweetLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <>
+                <div className='tweet original'>
+                  {tweetData && <Tweet tweetData={tweetData} showHr />}
+                </div>
+                {tweetData && (
+                  <ReplyForm
+                    parentPost={tweetData._id}
+                    originalPosterName={tweetData.user.username}
+                    submitReply={(response) => {
+                      setComments([response.data, ...comments]);
+                    }}
+                  />
+                )}
+              </>
+            )}
+            {commentsLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <div className='tweet-comments'>
+                {comments &&
+                  comments.map((tweet) => (
+                    <Link
+                      to={`/${tweet.user.username}/status/${tweet._id}`}
+                      className='tweet link'
+                      key={tweet._id}
+                    >
+                      <Tweet tweetData={tweet} />
+                    </Link>
+                  ))}
+              </div>
+            )}
+          </main>
+        </>
       )}
     </>
   );

@@ -2,13 +2,14 @@ import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AccountDisplay from './AccountDisplay';
 
 const FollowBox = () => {
   const [accounts, setAccounts] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const fetchRandomAccounts = async () => {
     try {
@@ -29,10 +30,6 @@ const FollowBox = () => {
       fetchRandomAccounts();
     }
   }, [user]);
-
-  useEffect(() => {
-    console.log(accounts);
-  }, [accounts]);
 
   return (
     <div className='asidecontainer followbox'>
@@ -56,7 +53,9 @@ const FollowBox = () => {
           </>
         )}
       </div>
-      <button id='showmore'>Show more</button>
+      <button id='showmore' onClick={() => navigate('connect')}>
+        Show more
+      </button>
     </div>
   );
 };

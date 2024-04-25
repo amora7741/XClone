@@ -9,6 +9,7 @@ import Index from '../pages/Index';
 import Home from '../pages/Home';
 import Layout from '../components/Layout';
 import TweetDetail from '../pages/TweetDetail';
+import Connect from '../pages/Connect';
 import { AuthContext } from '../context/AuthContext';
 
 const Router = () => {
@@ -24,6 +25,7 @@ const Router = () => {
       children: [
         { path: 'home', element: <Home /> },
         { path: ':username/status/:tweetId', element: <TweetDetail /> },
+        { path: 'connect', element: <Connect /> },
       ],
     },
   ]);
