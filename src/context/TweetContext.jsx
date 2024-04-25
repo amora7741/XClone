@@ -58,6 +58,20 @@ export const TweetProvider = ({ children }) => {
     }
   };
 
+  const handleFollow = async (accountId) => {
+    const url = `${
+      import.meta.env.VITE_BASE_API
+    }/api/users/${accountId}/follow`;
+
+    try {
+      const response = await axios.post(url, {}, { withCredentials: true });
+
+      return response;
+    } catch (error) {
+      alert('Error following/unfollowing the user:', error);
+    }
+  };
+
   return (
     <TweetContext.Provider
       value={{
@@ -67,6 +81,7 @@ export const TweetProvider = ({ children }) => {
         setTweetsData,
         getTweet,
         getComments,
+        handleFollow,
       }}
     >
       {children}

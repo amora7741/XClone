@@ -1,6 +1,18 @@
+import { useEffect, useState, useContext } from 'react';
+import { TweetContext } from '../context/TweetContext';
 import Button from './Button';
 
 const AccountDisplay = ({ account, showBio }) => {
+  const [isFollowing, setIsFollowing] = useState(account.isFollowing);
+  const { handleFollow } = useContext(TweetContext);
+
+  const handleFollowClick = async (e) => {
+    e.preventDefault();
+    const response = await handleFollow(account._id);
+
+    setIsFollowing(response.data.isFollowing);
+  };
+
   return (
     <div className='followbox-account'>
       <div className='followbox-account-top'>
@@ -11,8 +23,13 @@ const AccountDisplay = ({ account, showBio }) => {
             <p>@{account.username}</p>
           </div>
         </div>
-        <Button textColor='black' backgroundColor='white'>
-          Follow
+        <Button
+          textColor={isFollowing ? 'white' : 'black'}
+          backgroundColor={isFollowing ? 'transparent' : 'white'}
+          borderColor={isFollowing ? 'darkgray' : null}
+          onClick={handleFollowClick}
+        >
+          {isFollowing ? 'Following' : 'Follow'}
         </Button>
       </div>
       {showBio && (
