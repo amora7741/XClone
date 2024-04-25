@@ -1,5 +1,6 @@
 import WhatsHappening from './WhatsHappening';
 import Subscribe from './Subscribe';
+import FollowBox from './FollowBox';
 
 const AsideBar = () => {
   return (
@@ -14,6 +15,7 @@ const AsideBar = () => {
       </div>
       <Subscribe />
       <WhatsHappening />
+      <FollowBox />
     </aside>
   );
 };

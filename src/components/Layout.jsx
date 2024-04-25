@@ -16,7 +16,7 @@ const Layout = () => {
         <div className='pagecontainer'>
           {user && <Header />}
           <Outlet />
-          <AsideBar />
+          {user && <AsideBar />}
         </div>
       )}
     </>

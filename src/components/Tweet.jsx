@@ -40,10 +40,6 @@ const Tweet = ({ tweetData, showHr }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(tweetData);
-  }, [tweetData]);
-
   return (
     <>
       <div className='profile-picture'></div>
