@@ -1,8 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
 import AuthModal from '../components/AuthModal';
 import { AuthContext } from '../context/AuthContext';
-import { ScrollRestoration, useNavigate } from 'react-router-dom';
+import { ScrollRestoration, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import LoadingSpinner from '../components/LoadingSpinner';
+import AccountDisplay from '../components/AccountDisplay';
 
 const Connect = () => {
   const { user } = useContext(AuthContext);
@@ -18,10 +20,10 @@ const Connect = () => {
     navigate(-1);
   };
 
-  const fetchRandomAccounts = async () => {
+  const fetchAccounts = async () => {
     try {
       setLoading(true);
-      const url = `${import.meta.env.VITE_BASE_API}/api/users/random`;
+      const url = `${import.meta.env.VITE_BASE_API}/api/users/`;
       const response = await axios.get(url, { withCredentials: true });
 
       setAccounts(response.data);
@@ -34,7 +36,7 @@ const Connect = () => {
 
   useEffect(() => {
     if (user) {
-      fetchRandomAccounts();
+      fetchAccounts();
     }
   }, [user]);
 
@@ -59,6 +61,25 @@ const Connect = () => {
                 </svg>
               </button>
               <h1>Connect</h1>
+            </div>
+            <div className='account-list'>
+              {loading ? (
+                <LoadingSpinner />
+              ) : (
+                <>
+                  {accounts.length > 0 ? (
+                    <>
+                      {accounts.map((account) => (
+                        <Link to='' key={account._id} className='link'>
+                          <AccountDisplay account={account} />
+                        </Link>
+                      ))}
+                    </>
+                  ) : (
+                    <p>No users to follow.</p>
+                  )}
+                </>
+              )}
             </div>
           </main>
         </>
