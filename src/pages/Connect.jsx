@@ -71,7 +71,7 @@ const Connect = () => {
                     <>
                       {accounts.map((account) => (
                         <Link to='' key={account._id} className='link'>
-                          <AccountDisplay account={account} />
+                          <AccountDisplay account={account} showBio />
                         </Link>
                       ))}
                     </>

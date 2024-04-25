@@ -967,33 +967,45 @@ aside {
 
   &-account {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
     padding: 15px 15px 10px;
 
-    &-left {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-
-      .followbox-account-details {
-        display: flex;
-        flex-direction: column;
-
-        h2 {
-          font-size: 1rem;
-        }
-
-        p {
-          color: $light-gray;
-          font-size: 0.95rem;
-        }
-      }
+    .bio {
+      line-height: 1;
+      margin-left: 3rem;
     }
 
-    button {
-      padding: 10px 15px;
-      width: fit-content;
+    &-top {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      &-left {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+
+      button {
+        width: fit-content;
+        padding: 10px 15px;
+      }
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        color: $light-gray;
+      }
     }
   }
 }
