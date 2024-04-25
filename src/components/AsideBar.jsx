@@ -2,7 +2,20 @@ import WhatsHappening from './WhatsHappening';
 import Subscribe from './Subscribe';
 import FollowBox from './FollowBox';
 
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 const AsideBar = () => {
+  const location = useLocation();
+  const [showFollowBox, setShowFollowBox] = useState(
+    location.pathname !== '/connect'
+  );
+
+  useEffect(() => {
+    const shouldShowFollowBox = location.pathname !== '/connect';
+    setShowFollowBox(shouldShowFollowBox);
+  }, [location]);
+
   return (
     <aside>
       <div className='searchbar'>
@@ -15,7 +28,7 @@ const AsideBar = () => {
       </div>
       <Subscribe />
       <WhatsHappening />
-      <FollowBox />
+      {showFollowBox && <FollowBox />}
     </aside>
   );
 };
