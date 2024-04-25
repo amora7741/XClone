@@ -536,6 +536,7 @@ header {
 
 .link {
   text-decoration: none;
+  color: inherit;
 
   &:hover {
     background-color: $tweet-hover-color;
@@ -905,10 +906,6 @@ aside {
 .trendingposts-container {
   display: flex;
   flex-direction: column;
-
-  a {
-    text-decoration: none;
-  }
 }
 
 .trending-post {
