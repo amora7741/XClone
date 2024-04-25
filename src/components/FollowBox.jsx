@@ -48,7 +48,7 @@ const FollowBox = () => {
                 ))}
               </>
             ) : (
-              <p>No users to follow.</p>
+              <p className='no-users'>No users to follow.</p>
             )}
           </>
         )}

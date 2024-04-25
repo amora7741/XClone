@@ -1005,6 +1005,10 @@ aside {
 .account-list {
   display: flex;
   flex-direction: column;
+
+  .no-users {
+    align-self: center;
+  }
 }
 
 .connect-main {
