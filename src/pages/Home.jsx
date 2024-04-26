@@ -38,7 +38,7 @@ const Home = () => {
         <>
           <ScrollRestoration />
           <main className='home-main'>
-            <div className='home-buttoncontainer'>
+            <div className='top-buttoncontainer'>
               <button
                 onClick={() => handleButtonClick(1)}
                 className={activeButton === 1 ? 'active' : ''}
