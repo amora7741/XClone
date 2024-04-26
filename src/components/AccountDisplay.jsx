@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { TweetContext } from '../context/TweetContext';
 import Button from './Button';
 

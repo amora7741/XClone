@@ -11,6 +11,7 @@ import Layout from '../components/Layout';
 import TweetDetail from '../pages/TweetDetail';
 import Connect from '../pages/Connect';
 import { AuthContext } from '../context/AuthContext';
+import AccountDetail from '../pages/AccountDetail';
 
 const Router = () => {
   const { user } = useContext(AuthContext);
@@ -26,6 +27,7 @@ const Router = () => {
         { path: 'home', element: <Home /> },
         { path: ':username/status/:tweetId', element: <TweetDetail /> },
         { path: 'connect', element: <Connect /> },
+        { path: ':username', element: <AccountDetail /> },
       ],
     },
   ]);

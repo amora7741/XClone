@@ -27,8 +27,10 @@ const AsideBar = () => {
         <input type='text' placeholder='Search' />
       </div>
       <Subscribe />
-      <WhatsHappening />
-      {showFollowBox && <FollowBox />}
+      <div className='aside-sticky-container'>
+        <WhatsHappening />
+        {showFollowBox && <FollowBox />}
+      </div>
     </aside>
   );
 };

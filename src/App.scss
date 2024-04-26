@@ -573,6 +573,10 @@ header {
         align-items: center;
         gap: 3px;
 
+        h4:hover {
+          text-decoration: underline;
+        }
+
         p {
           font-weight: normal;
           color: $light-gray;
@@ -733,7 +737,9 @@ hr {
   padding: 0 15px 10px;
 }
 
-.tweetdetail-main {
+.tweetdetail-main,
+.connect-main,
+.accountdetail-main {
   justify-self: center;
   display: flex;
   flex-direction: column;
@@ -879,8 +885,6 @@ aside {
     }
 
     &.trending {
-      position: sticky;
-      top: -5rem;
       gap: 5px;
       h1 {
         padding: 15px 15px 0;
@@ -950,9 +954,6 @@ aside {
 }
 
 .followbox {
-  position: sticky;
-  top: 28.5rem;
-
   h1 {
     padding: 15px 15px 0;
   }
@@ -1011,43 +1012,10 @@ aside {
   }
 }
 
-.connect-main {
-  justify-self: center;
+.aside-sticky-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  border-left: 1px solid $dark-gray;
-  border-right: 1px solid $dark-gray;
-
-  &-top {
-    h1 {
-      font-size: 1.5rem;
-    }
-
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px 5px;
-
-    button {
-      background-color: transparent;
-      padding: 10px;
-      width: fit-content;
-
-      &:hover {
-        background-color: $hover-color;
-      }
-
-      svg {
-        fill: white;
-        width: 22px;
-      }
-    }
-  }
+  gap: 1rem;
+  position: sticky;
+  top: -20rem;
 }

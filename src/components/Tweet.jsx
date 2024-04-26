@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReplyModal from './ReplyModal';
+import { Link } from 'react-router-dom';
 
 const Tweet = ({ tweetData, showHr }) => {
   const [likeCount, setLikeCount] = useState(
@@ -46,7 +47,9 @@ const Tweet = ({ tweetData, showHr }) => {
       <div className='tweet-content'>
         <div className='tweet-content-top'>
           <div className='tweet-content-top-user'>
-            <h4>{tweetData.user.name}</h4>
+            <Link to={`/${tweetData.user.username}`} className='link'>
+              <h4>{tweetData.user.name}</h4>
+            </Link>
             <p>@{tweetData.user.username}</p>
           </div>
           <button>
