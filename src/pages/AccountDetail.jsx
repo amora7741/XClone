@@ -5,19 +5,14 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Tweet from '../components/Tweet';
-import he from 'he';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const AccountDetail = () => {
   const { username } = useParams();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const [activeButton, setActiveButton] = useState(1);
-  const [loading, setLoading] = useState(false);
-
-  const [posts, setPosts] = useState([]);
-  const [replies, setReplies] = useState([]);
-  const [likes, setLikes] = useState([]);
+  const [activeButton, setActiveButton] = useState('posts');
+  const { posts, replies, likes, loading, error } = useUserInfo(username, user);
 
   const handleClick = () => {
     navigate(-1);
@@ -27,123 +22,114 @@ const AccountDetail = () => {
     navigate('/');
   };
 
-  const getUserInfo = async (info) => {
-    const url = `${
-      import.meta.env.VITE_BASE_API
-    }/api/users/${username}/${info}`;
+  const displayTweets = (info) =>
+    info.map((tweet) => (
+      <Link
+        to={`/${tweet.user.username}/status/${tweet._id}`}
+        className='tweet link'
+        key={tweet._id}
+      >
+        <Tweet tweetData={tweet} />
+      </Link>
+    ));
 
-    try {
-      const response = await axios.get(url, { withCredentials: true });
-
-      return response.data;
-    } catch (error) {
-      alert(error);
-    }
-  };
-
-  const displayTweets = (info) => {
+  if (!user) {
     return (
-      <>
-        {info.map((tweet) => (
-          <Link
-            to={`/${tweet.user.username}/status/${tweet._id}`}
-            className='tweet link'
-            key={tweet._id}
-          >
-            <Tweet tweetData={tweet} />
-          </Link>
-        ))}
-      </>
+      <AuthModal
+        initialMode={'signIn'}
+        open={!user}
+        onClose={handleModalClose}
+      />
     );
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (user) {
-        try {
-          setLoading(true);
-          const postsData = await getUserInfo('posts');
-          const repliesData = await getUserInfo('replies');
-          const likesData = await getUserInfo('likes');
-
-          setPosts(postsData);
-          setReplies(repliesData);
-          setLikes(likesData);
-        } catch (error) {
-          alert(error);
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchData();
-  }, [user]);
-
-  useEffect(() => {
-    console.log(posts);
-    console.log(replies);
-    console.log(likes);
-  }, [posts, replies, likes]);
+  }
 
   return (
     <>
-      {!user ? (
-        <AuthModal
-          initialMode={'signIn'}
-          open={!user}
-          onClose={() => handleModalClose()}
-        />
-      ) : (
-        <>
-          <ScrollRestoration />
-          <main className='accountdetail-main'>
-            <div className='accountdetail-main-top'>
-              <button onClick={handleClick}>
-                <svg viewBox='0 0 24 24' aria-hidden='true'>
-                  <g>
-                    <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
-                  </g>
-                </svg>
-              </button>
-              <h1>{username}</h1>
-            </div>
-            <div className='top-buttoncontainer'>
-              <button
-                onClick={() => setActiveButton(1)}
-                className={activeButton === 1 ? 'active' : ''}
-              >
-                <p>Posts</p>
-              </button>
-              <button
-                onClick={() => setActiveButton(2)}
-                className={activeButton === 2 ? 'active' : ''}
-              >
-                <p>Replies</p>
-              </button>
-              <button
-                onClick={() => setActiveButton(3)}
-                className={activeButton === 3 ? 'active' : ''}
-              >
-                <p>Likes</p>
-              </button>
-            </div>
-            <div className='tweets-container'>
-              {loading ? (
-                <LoadingSpinner />
-              ) : (
-                <>
-                  {activeButton === 1 && displayTweets(posts)}
-                  {activeButton === 2 && displayTweets(replies)}
-                  {activeButton === 3 && displayTweets(likes)}
-                </>
-              )}
-            </div>
-          </main>
-        </>
-      )}
+      <ScrollRestoration />
+      <main className='accountdetail-main'>
+        <div className='accountdetail-main-top'>
+          <button onClick={handleClick}>
+            <svg viewBox='0 0 24 24' aria-hidden='true'>
+              <g>
+                <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
+              </g>
+            </svg>
+          </button>
+          <h1>{username}</h1>
+        </div>
+        <div className='top-buttoncontainer'>
+          <button
+            onClick={() => setActiveButton('posts')}
+            className={activeButton === 'posts' ? 'active' : ''}
+          >
+            <p>Posts</p>
+          </button>
+          <button
+            onClick={() => setActiveButton('replies')}
+            className={activeButton === 'replies' ? 'active' : ''}
+          >
+            <p>Replies</p>
+          </button>
+          <button
+            onClick={() => setActiveButton('likes')}
+            className={activeButton === 'likes' ? 'active' : ''}
+          >
+            <p>Likes</p>
+          </button>
+        </div>
+        <div className='tweets-container'>
+          {loading ? (
+            <LoadingSpinner />
+          ) : error ? (
+            <p style={{ alignSelf: 'center' }}>
+              There was an error fetching the data.
+            </p>
+          ) : (
+            displayTweets({ posts, replies, likes }[activeButton])
+          )}
+        </div>
+      </main>
     </>
   );
+};
+
+const useUserInfo = (username, user) => {
+  const [data, setData] = useState({ posts: [], replies: [], likes: [] });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async (infoType) => {
+      try {
+        setLoading(true);
+        const url = `${
+          import.meta.env.VITE_BASE_API
+        }/api/users/${username}/${infoType}`;
+
+        const response = await axios.get(url, { withCredentials: true });
+
+        return response.data;
+      } catch (error) {
+        setError(error);
+        return [];
+      }
+    };
+
+    const getUserData = async () => {
+      if (user) {
+        const postsData = await fetchData('posts');
+        const repliesData = await fetchData('replies');
+        const likesData = await fetchData('likes');
+
+        setData({ posts: postsData, replies: repliesData, likes: likesData });
+        setLoading(false);
+      }
+    };
+
+    getUserData();
+  }, [username, user]);
+
+  return { ...data, loading, error };
 };
 
 export default AccountDetail;
