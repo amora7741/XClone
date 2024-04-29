@@ -2,6 +2,7 @@ import AuthModal from '../components/AuthModal';
 import { useContext, useEffect, useState } from 'react';
 import { ScrollRestoration, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { TweetContext } from '../context/TweetContext';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Tweet from '../components/Tweet';
@@ -17,6 +18,16 @@ const AccountDetail = () => {
     username,
     user
   );
+
+  const [isFollowing, setIsFollowing] = useState(false);
+  const { handleFollow } = useContext(TweetContext);
+
+  const handleFollowClick = async (e) => {
+    e.preventDefault();
+    const response = await handleFollow(account._id);
+
+    setIsFollowing(response.data.isFollowing);
+  };
 
   const handleClick = () => {
     navigate(-1);
@@ -36,6 +47,12 @@ const AccountDetail = () => {
         <Tweet tweetData={tweet} />
       </Link>
     ));
+
+  useEffect(() => {
+    if (account) {
+      setIsFollowing(account.isFollowing);
+    }
+  }, [account]);
 
   useEffect(() => {
     console.log(account);
@@ -73,9 +90,24 @@ const AccountDetail = () => {
             <div className='banner'></div>
             {account && (
               <div className='accountdetails'>
-                <Button backgroundColor='white' textColor='black'>
-                  Follow
-                </Button>
+                {account.isCurrentUser ? (
+                  <Button
+                    textColor='white'
+                    backgroundColor='transparent'
+                    borderColor='darkgray'
+                  >
+                    Edit Profile
+                  </Button>
+                ) : (
+                  <Button
+                    textColor={isFollowing ? 'white' : 'black'}
+                    backgroundColor={isFollowing ? 'transparent' : 'white'}
+                    borderColor={isFollowing ? 'darkgray' : null}
+                    onClick={handleFollowClick}
+                  >
+                    {isFollowing ? 'Following' : 'Follow'}
+                  </Button>
+                )}
                 <h1>{account.name}</h1>
                 <p>@{account.username}</p>
                 <div className='followage'>
