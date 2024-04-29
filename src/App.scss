@@ -755,7 +755,7 @@ hr {
 
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 11;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -1020,4 +1020,26 @@ aside {
   gap: 1rem;
   position: sticky;
   top: -20rem;
+}
+
+.accountdetail-main {
+  .top-buttoncontainer {
+    position: static;
+  }
+}
+
+.accountdetail-container {
+  display: flex;
+  flex-direction: column;
+
+  .banner {
+    background-color: rgb(51, 54, 57);
+    height: 13rem;
+  }
+
+  .accountdetails {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+  }
 }

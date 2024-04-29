@@ -12,7 +12,10 @@ const AccountDetail = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [activeButton, setActiveButton] = useState('posts');
-  const { posts, replies, likes, loading, error } = useUserInfo(username, user);
+  const { account, posts, replies, likes, loading, error } = useUserInfo(
+    username,
+    user
+  );
 
   const handleClick = () => {
     navigate(-1);
@@ -33,6 +36,10 @@ const AccountDetail = () => {
       </Link>
     ));
 
+  useEffect(() => {
+    console.log(account);
+  }, [account]);
+
   if (!user) {
     return (
       <AuthModal
@@ -46,55 +53,65 @@ const AccountDetail = () => {
   return (
     <>
       <ScrollRestoration />
-      <main className='accountdetail-main'>
-        <div className='accountdetail-main-top'>
-          <button onClick={handleClick}>
-            <svg viewBox='0 0 24 24' aria-hidden='true'>
-              <g>
-                <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
-              </g>
-            </svg>
-          </button>
-          <h1>{username}</h1>
-        </div>
-        <div className='top-buttoncontainer'>
-          <button
-            onClick={() => setActiveButton('posts')}
-            className={activeButton === 'posts' ? 'active' : ''}
-          >
-            <p>Posts</p>
-          </button>
-          <button
-            onClick={() => setActiveButton('replies')}
-            className={activeButton === 'replies' ? 'active' : ''}
-          >
-            <p>Replies</p>
-          </button>
-          <button
-            onClick={() => setActiveButton('likes')}
-            className={activeButton === 'likes' ? 'active' : ''}
-          >
-            <p>Likes</p>
-          </button>
-        </div>
-        <div className='tweets-container'>
-          {loading ? (
-            <LoadingSpinner />
-          ) : error ? (
-            <p style={{ alignSelf: 'center' }}>
-              There was an error fetching the data.
-            </p>
-          ) : (
-            displayTweets({ posts, replies, likes }[activeButton])
-          )}
-        </div>
-      </main>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <main className='accountdetail-main'>
+          <div className='accountdetail-main-top'>
+            <button onClick={handleClick}>
+              <svg viewBox='0 0 24 24' aria-hidden='true'>
+                <g>
+                  <path d='M7.414 13l5.043 5.04-1.414 1.42L3.586 12l7.457-7.46 1.414 1.42L7.414 11H21v2H7.414z'></path>
+                </g>
+              </svg>
+            </button>
+            <h1>{account && account.name}</h1>
+          </div>
+          <div className='accountdetail-container'>
+            <div className='banner'></div>
+          </div>
+          <div className='top-buttoncontainer'>
+            <button
+              onClick={() => setActiveButton('posts')}
+              className={activeButton === 'posts' ? 'active' : ''}
+            >
+              <p>Posts</p>
+            </button>
+            <button
+              onClick={() => setActiveButton('replies')}
+              className={activeButton === 'replies' ? 'active' : ''}
+            >
+              <p>Replies</p>
+            </button>
+            <button
+              onClick={() => setActiveButton('likes')}
+              className={activeButton === 'likes' ? 'active' : ''}
+            >
+              <p>Likes</p>
+            </button>
+          </div>
+          <div className='tweets-container'>
+            {error ? (
+              <p style={{ alignSelf: 'center' }}>
+                There was an error fetching the data.
+              </p>
+            ) : (
+              displayTweets({ posts, replies, likes }[activeButton])
+            )}
+          </div>
+        </main>
+      )}
     </>
   );
 };
 
 const useUserInfo = (username, user) => {
-  const [data, setData] = useState({ posts: [], replies: [], likes: [] });
+  const [data, setData] = useState({
+    account: null,
+    posts: [],
+    replies: [],
+    likes: [],
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -102,9 +119,9 @@ const useUserInfo = (username, user) => {
     const fetchData = async (infoType) => {
       try {
         setLoading(true);
-        const url = `${
-          import.meta.env.VITE_BASE_API
-        }/api/users/${username}/${infoType}`;
+        const url = `${import.meta.env.VITE_BASE_API}/api/users/${username}${
+          infoType ? `/${infoType}` : ''
+        }`;
 
         const response = await axios.get(url, { withCredentials: true });
 
@@ -117,11 +134,17 @@ const useUserInfo = (username, user) => {
 
     const getUserData = async () => {
       if (user) {
+        const accountData = await fetchData();
         const postsData = await fetchData('posts');
         const repliesData = await fetchData('replies');
         const likesData = await fetchData('likes');
 
-        setData({ posts: postsData, replies: repliesData, likes: likesData });
+        setData({
+          account: accountData,
+          posts: postsData,
+          replies: repliesData,
+          likes: likesData,
+        });
         setLoading(false);
       }
     };

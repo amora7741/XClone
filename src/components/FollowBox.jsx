@@ -42,7 +42,11 @@ const FollowBox = () => {
             {accounts.length > 0 ? (
               <>
                 {accounts.map((account) => (
-                  <Link to='' key={account._id} className='link'>
+                  <Link
+                    to={`/${account.username}`}
+                    key={account._id}
+                    className='link'
+                  >
                     <AccountDisplay account={account} />
                   </Link>
                 ))}
