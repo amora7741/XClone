@@ -3,9 +3,10 @@ import Footer from '../components/Footer';
 import JoinToday from '../components/JoinToday';
 import Button from '../components/Button';
 import AuthModal from '../components/AuthModal';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import Loading from '../components/Loading';
+import axios from 'axios';
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -16,6 +17,20 @@ const Index = () => {
     setInitialMode(mode);
     setModalOpen(true);
   };
+
+  const getHome = async () => {
+    try {
+      const url = `${import.meta.env.VITE_BASE_API}/`;
+
+      await axios.get(url);
+    } catch (error) {
+      alert('Server Error.');
+    }
+  };
+
+  useEffect(() => {
+    getHome();
+  }, []);
 
   return (
     <>
