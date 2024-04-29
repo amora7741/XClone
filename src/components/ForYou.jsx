@@ -13,15 +13,21 @@ const ForYou = () => {
         <LoadingSpinner />
       ) : (
         <div className='tweets-container'>
-          {tweetsData.map((tweet) => (
-            <Link
-              to={`/${tweet.user.username}/status/${tweet._id}`}
-              className='tweet link'
-              key={tweet._id}
-            >
-              <Tweet tweetData={tweet} />
-            </Link>
-          ))}
+          {tweetsData.length > 0 ? (
+            <>
+              {tweetsData.map((tweet) => (
+                <Link
+                  to={`/${tweet.user.username}/status/${tweet._id}`}
+                  className='tweet link'
+                  key={tweet._id}
+                >
+                  <Tweet tweetData={tweet} />
+                </Link>
+              ))}
+            </>
+          ) : (
+            <p style={{ alignSelf: 'center' }}>No posts to show!</p>
+          )}
         </div>
       )}
     </>

@@ -37,8 +37,12 @@ const AccountDetail = () => {
     navigate('/');
   };
 
-  const displayTweets = (info) =>
-    info.map((tweet) => (
+  const displayTweets = (info) => {
+    if (info.length === 0) {
+      return <p style={{ alignSelf: 'center' }}>No posts to show!</p>;
+    }
+
+    return info.map((tweet) => (
       <Link
         to={`/${tweet.user.username}/status/${tweet._id}`}
         className='tweet link'
@@ -47,6 +51,7 @@ const AccountDetail = () => {
         <Tweet tweetData={tweet} />
       </Link>
     ));
+  };
 
   useEffect(() => {
     if (account) {
