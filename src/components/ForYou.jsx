@@ -1,11 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useMemo } from 'react'; // Import useMemo
 import { TweetContext } from '../context/TweetContext';
 import LoadingSpinner from './LoadingSpinner';
 import Tweet from './Tweet';
 import { Link } from 'react-router-dom';
 
-const ForYou = () => {
+const ForYou = ({ following }) => {
   const { loading, tweetsData } = useContext(TweetContext);
+
+  const filteredTweets = useMemo(() => {
+    if (following) {
+      return tweetsData.filter((tweet) => tweet.isFromFollowing);
+    }
+    return tweetsData;
+  }, [tweetsData, following]);
 
   return (
     <>
@@ -13,9 +20,9 @@ const ForYou = () => {
         <LoadingSpinner />
       ) : (
         <div className='tweets-container'>
-          {tweetsData.length > 0 ? (
+          {filteredTweets.length > 0 ? (
             <>
-              {tweetsData.map((tweet) => (
+              {filteredTweets.map((tweet) => (
                 <Link
                   to={`/${tweet.user.username}/status/${tweet._id}`}
                   className='tweet link'

@@ -56,7 +56,7 @@ const Home = () => {
               <TweetForm />
             </div>
             <hr />
-            {activeButton === 1 ? <ForYou /> : <h1>Hello</h1>}
+            {activeButton === 1 ? <ForYou /> : <ForYou following />}
           </main>
         </>
       )}
