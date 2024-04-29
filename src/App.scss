@@ -750,7 +750,7 @@ hr {
 
   &-top {
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
 
     position: sticky;
@@ -1034,12 +1034,45 @@ aside {
 
   .banner {
     background-color: rgb(51, 54, 57);
-    height: 13rem;
+    height: 12rem;
   }
 
   .accountdetails {
     display: flex;
     flex-direction: column;
     padding: 12px 16px;
+
+    button {
+      width: fit-content;
+      padding: 10px 15px;
+      align-self: flex-end;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: $light-gray;
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
+
+    .followage {
+      display: flex;
+
+      gap: 15px;
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      span {
+        color: $light-gray;
+        font-weight: normal;
+        font-size: 0.95rem;
+      }
+    }
   }
 }

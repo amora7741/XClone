@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Tweet from '../components/Tweet';
 import LoadingSpinner from '../components/LoadingSpinner';
+import Button from '../components/Button';
 
 const AccountDetail = () => {
   const { username } = useParams();
@@ -69,6 +70,23 @@ const AccountDetail = () => {
           </div>
           <div className='accountdetail-container'>
             <div className='banner'></div>
+            {account && (
+              <div className='accountdetails'>
+                <Button backgroundColor='white' textColor='black'>
+                  Follow
+                </Button>
+                <h1>{account.name}</h1>
+                <p>@{account.username}</p>
+                <div className='followage'>
+                  <h2>
+                    {account.followingCount} <span>Following</span>
+                  </h2>
+                  <h2>
+                    {account.followersCount} <span>Followers</span>
+                  </h2>
+                </div>
+              </div>
+            )}
           </div>
           <div className='top-buttoncontainer'>
             <button
