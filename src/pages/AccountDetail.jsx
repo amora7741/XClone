@@ -69,6 +69,7 @@ const AccountDetail = () => {
             <h1>{account && account.name}</h1>
           </div>
           <div className='accountdetail-container'>
+            <div className='accountdetail-container-picture'></div>
             <div className='banner'></div>
             {account && (
               <div className='accountdetails'>
