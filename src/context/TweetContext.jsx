@@ -14,11 +14,8 @@ export const TweetProvider = ({ children }) => {
     try {
       setLoading(true);
       const response = await axios.get(url, { withCredentials: true });
-      const decodedTweets = response.data.map((tweet) => ({
-        ...tweet,
-        text: he.decode(tweet.text),
-      }));
-      setTweetsData(decodedTweets);
+
+      setTweetsData(response.data);
     } catch (err) {
       alert(err);
     } finally {

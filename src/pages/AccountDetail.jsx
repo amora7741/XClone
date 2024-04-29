@@ -54,10 +54,6 @@ const AccountDetail = () => {
     }
   }, [account]);
 
-  useEffect(() => {
-    console.log(account);
-  }, [account]);
-
   if (!user) {
     return (
       <AuthModal

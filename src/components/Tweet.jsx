@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import ReplyModal from './ReplyModal';
 import { Link } from 'react-router-dom';
+import he from 'he';
 
 const Tweet = ({ tweetData, showHr }) => {
   const [likeCount, setLikeCount] = useState(
@@ -19,6 +20,8 @@ const Tweet = ({ tweetData, showHr }) => {
 
   const [liked, setLiked] = useState(tweetData.isLiked);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const decodedText = he.decode(tweetData.text);
 
   const handleLike = async (e) => {
     e.preventDefault();
@@ -61,7 +64,7 @@ const Tweet = ({ tweetData, showHr }) => {
           </button>
         </div>
         <div className='tweet-content-text'>
-          <p>{tweetData.text}</p>
+          <p>{decodedText}</p>
         </div>
         {showHr && <hr style={{ marginTop: 1 + 'rem' }} />}
         <div className='tweet-buttons'>
