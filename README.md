@@ -1,5 +1,5 @@
 # XClone
-This project is a clone of the popular social media site X (formerly Twitter). This web app contains most of the major functions of X, including signing up/in, creating a post, liking a post, commenting on a post, and following users. The main purpose for creating this project was to get more experience specifically on the backend side, diving into topics such as passing of cookies, data encryption, storing user login sessions, user authentication and so on.
+This project is a clone of the popular social media site X (formerly Twitter). This web app contains most of the major functions of X, including signing up/in, creating a post, liking a post, commenting on a post, and following users. The main purpose for creating this project was to get more experience specifically on the backend side, diving into topics such as passing of cookies, data encryption, storing user login sessions, user authentication and so on.  
 [Live Preview](https://x-clone-mocha.vercel.app/)
 
 ## Features
