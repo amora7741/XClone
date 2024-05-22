@@ -333,11 +333,6 @@ select {
     padding: 0 10px;
     gap: 20px;
   }
-
-  @media (max-width: $layout-breakpoint-xsmall) {
-    flex-direction: column;
-    padding: 0;
-  }
 }
 
 nav {

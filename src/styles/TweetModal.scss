@@ -1,17 +1,21 @@
 $blue-primary: rgb(29, 155, 240);
+$cover-screen-breakpoint: 700px;
 
 .tweet-modal-content {
   margin: 3rem auto !important;
   width: 37rem;
   min-height: 15rem;
   height: fit-content;
-  max-height: 90vh;
   gap: 10px;
   padding: 10px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: unset;
+
+  @media (max-width: $cover-screen-breakpoint) {
+    margin: 0 !important;
+  }
 
   #closebutton {
     border-radius: 9999px;

@@ -1,6 +1,7 @@
 @use '../App.scss';
 
 $overlay-background: rgba(91, 112, 131, 0.4);
+$cover-screen-breakpoint: 700px;
 
 .popup-overlay {
   background: $overlay-background;
@@ -16,6 +17,12 @@ $overlay-background: rgba(91, 112, 131, 0.4);
   border-radius: 16px;
   width: 35rem;
   min-height: 40rem;
+
+  @media (max-width: $cover-screen-breakpoint) {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0;
+  }
 
   #closebutton {
     position: absolute;

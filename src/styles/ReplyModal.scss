@@ -1,7 +1,13 @@
+$cover-screen-breakpoint: 700px;
+
 .reply-modal-content {
   margin: 3rem auto !important;
   min-height: unset;
   height: fit-content;
+
+  @media (max-width: $cover-screen-breakpoint) {
+    margin: 0 !important;
+  }
 
   .reply-container {
     padding: 5px 15px;
