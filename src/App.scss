@@ -9,6 +9,8 @@ $like-hover-color: rgb(38, 0, 0);
 $like-color: red;
 $layout-breakpoint-large: 1275px;
 $layout-breakpoint-medium: 1050px;
+$layout-breakpoint-small: 720px;
+$layout-breakpoint-xsmall: 500px;
 
 @mixin hoverStyles(
   $bgColor: $hover-color,
@@ -324,6 +326,12 @@ select {
   padding: 0 20px;
   gap: 10px;
   min-height: 100vh;
+
+  @media (max-width: $layout-breakpoint-small) {
+    display: flex;
+    padding: 0 10px;
+    gap: 20px;
+  }
 }
 
 nav {
