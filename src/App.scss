@@ -333,6 +333,11 @@ select {
     padding: 0 10px;
     gap: 20px;
   }
+
+  @media (max-width: $layout-breakpoint-xsmall) {
+    flex-direction: column;
+    padding: 0;
+  }
 }
 
 nav {
@@ -434,6 +439,11 @@ header {
   width: 100%;
   border-left: 1px solid $dark-gray;
   border-right: 1px solid $dark-gray;
+
+  @media (max-width: $layout-breakpoint-xsmall) {
+    border-left: none;
+    border-right: none;
+  }
 }
 
 .top-buttoncontainer {
